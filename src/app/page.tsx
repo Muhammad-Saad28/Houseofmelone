@@ -45,11 +45,11 @@ export default function Home() {
         <CategoryMarquee />
 
         {/* Spacer between carousel and products */}
-        <div className="h-12 md:h-20 lg:h-28" />
+        <div className="h-20 md:h-32 lg:h-44" />
 
         {/* 3. FEATURED PRODUCTS (Alternating Layout) */}
-        <section className="w-full bg-cream pb-20 md:pb-32 lg:pb-40">
-          <div className="container-site flex flex-col gap-24 md:gap-36 lg:gap-48">
+        <section className="w-full bg-cream pb-24 md:pb-40 lg:pb-56">
+          <div className="container-site flex flex-col gap-28 md:gap-44 lg:gap-60">
             {homepageFeatures.map((product, index) => (
               <ProductFeature
                 key={product.id}
@@ -65,7 +65,7 @@ export default function Home() {
         <ShopTheCollection />
 
         {/* Spacer between collection and footer */}
-        <div className="h-12 md:h-20 lg:h-28" />
+        <div className="h-20 md:h-32 lg:h-44" />
       </main>
 
       {/* 5. FOOTER */}

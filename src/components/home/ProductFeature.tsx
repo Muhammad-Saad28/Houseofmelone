@@ -65,7 +65,7 @@ export default function ProductFeature({
           className="w-[65%] md:w-[68%] flex flex-col justify-center pl-2 md:pl-6 lg:pl-10"
         >
           {/* Section label with vertical accent */}
-          <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+          <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
             <span className="w-5 md:w-10 h-[1px] bg-walnut/25" />
             <span className="text-[0.5rem] md:text-[0.625rem] uppercase tracking-[0.22em] text-olive font-medium">
               {String(index + 1).padStart(2, "0")} — {product.homepageSection}
@@ -73,12 +73,12 @@ export default function ProductFeature({
           </div>
 
           {/* Product name — larger, bolder */}
-          <h3 className="font-serif text-[1.375rem] sm:text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.02] tracking-[-0.02em] uppercase text-walnut mb-4 md:mb-6">
+          <h3 className="font-serif text-[1.375rem] sm:text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.02] tracking-[-0.02em] uppercase text-walnut mb-6 md:mb-9">
             {product.name}
           </h3>
 
           {/* Description with left border accent */}
-          <div className="flex gap-3 md:gap-4 mb-5 md:mb-8">
+          <div className="flex gap-3 md:gap-4 mb-7 md:mb-11">
             <span className="w-[2px] h-auto bg-walnut/15 flex-shrink-0 self-stretch" />
             <p className="text-[0.6rem] sm:text-[0.75rem] md:text-[0.875rem] leading-[1.8] md:leading-[2] text-deep/50 max-w-[360px]">
               {product.homepageDescription}
@@ -86,7 +86,7 @@ export default function ProductFeature({
           </div>
 
           {/* Price + Colors — refined row */}
-          <div className="flex items-center gap-8 md:gap-12 mb-6 md:mb-9">
+          <div className="flex items-center gap-8 md:gap-12 mb-8 md:mb-12">
             <div className="flex flex-col">
               <span className="text-[0.4rem] md:text-[0.5rem] uppercase tracking-[0.2em] text-olive/60 mb-1.5">
                 Price
@@ -115,7 +115,8 @@ export default function ProductFeature({
           </div>
 
           {/* Divider */}
-          <div className="w-10 md:w-14 h-[1px] bg-sand/40 mb-6 md:mb-9" />
+          <div className="w-10 md:w-14 h-[1px] bg-sand/40 mb-8 md:mb-12" />
+
 
           {/* CTA — with hover sweep */}
           <div>

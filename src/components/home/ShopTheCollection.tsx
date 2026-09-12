@@ -18,13 +18,13 @@ export default function ShopTheCollection() {
 
   return (
     <section ref={ref} className="w-full bg-cream">
-      <div className="container-site py-16 md:py-24 lg:py-32">
+      <div className="container-site py-20 md:py-32 lg:py-44">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.65, ease: editorialEase }}
-          className="mb-10 md:mb-14 lg:mb-16"
+          className="mb-12 md:mb-18 lg:mb-20"
         >
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-5">
             <span className="w-5 md:w-10 h-[1px] bg-walnut/30" />
@@ -32,7 +32,8 @@ export default function ShopTheCollection() {
               The Edit
             </span>
           </div>
-          <h2 className="font-serif text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-3 md:mb-4">
+          <h2 className="font-serif text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-5 md:mb-7">
+
             Shop The Collection
           </h2>
           <p className="text-[0.65rem] sm:text-[0.75rem] md:text-[0.875rem] leading-[1.7] text-deep/50 max-w-[380px]">
