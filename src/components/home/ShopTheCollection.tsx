@@ -1,20 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { products, formatPrice } from "@/data/products";
+import { Product } from "@/types";
+import { formatPrice } from "@/lib/utils";
 import { editorialEase } from "@/lib/animations";
-
-const COLLECTION_IDS = ["1", "3", "6", "8"];
 
 export default function ShopTheCollection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [collectionProducts, setCollectionProducts] = useState<Product[]>([]);
 
-  const collectionProducts = COLLECTION_IDS
-    .map((id) => products.find((p) => p.id === id))
-    .filter(Boolean) as typeof products;
+  useEffect(() => {
+    async function fetchCollection() {
+      try {
+        const res = await fetch("/api/products");
+        const allProducts: Product[] = await res.json();
+        const featured = allProducts
+          .filter((p) => p.featured)
+          .slice(0, 4);
+        setCollectionProducts(featured);
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    fetchCollection();
+  }, []);
 
   return (
     <section ref={ref} className="w-full bg-cream">
@@ -33,7 +45,6 @@ export default function ShopTheCollection() {
             </span>
           </div>
           <h2 className="font-serif text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-5 md:mb-7">
-
             Shop The Collection
           </h2>
           <p className="text-[0.65rem] sm:text-[0.75rem] md:text-[0.875rem] leading-[1.7] text-deep/50 max-w-[380px]">

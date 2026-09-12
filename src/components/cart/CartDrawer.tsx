@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { formatPrice } from "@/data/products";
+import { formatPrice } from "@/lib/utils";
 import { cartOverlay, cartPanel } from "@/lib/animations";
 
 interface CartItemData {

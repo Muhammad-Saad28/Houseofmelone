@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Product } from "@/types";
-import { formatPrice } from "@/data/products";
+import { formatPrice } from "@/lib/utils";
 import { editorialEase } from "@/lib/animations";
 
 interface ProductFeatureProps {

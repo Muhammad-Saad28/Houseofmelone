@@ -1,21 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { getProductBySlug, formatPrice, formatPriceUSD } from "@/data/products";
+import { Product } from "@/types";
+import { formatPrice, formatPriceUSD } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+import { staggerContainer, staggerItem, editorialEase } from "@/lib/animations";
+
 
 export default function ProductPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const product = getProductBySlug(slug);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const res = await fetch(`/api/products?slug=${slug}`);
+        if (res.ok) {
+          const data = await res.json();
+          setProduct(data);
+        }
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProduct();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className="flex-1 flex items-center justify-center py-32">
+          <div className="text-center">
+            <span className="text-[0.625rem] uppercase tracking-[0.14em] text-olive">
+              Loading...
+            </span>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   if (!product) {
     return (
@@ -58,17 +96,29 @@ export default function ProductPage() {
         </div>
 
         {/* Product */}
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 pb-12 md:pb-16 lg:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 pb-24 md:pb-40 lg:pb-56">
+          <motion.div 
+            variants={staggerContainer(0.15)}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24"
+          >
             {/* Gallery */}
-            <div className="lg:col-span-7 space-y-3">
+            <motion.div variants={staggerItem} className="lg:col-span-7 space-y-4">
               {/* Main image */}
               <div className="relative w-full aspect-[4/5] overflow-hidden bg-cream-dim">
-                <img
-                  src={product.images[activeImage]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeImage}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    src={product.images[activeImage]}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </AnimatePresence>
                 <div className="absolute top-4 left-4 bg-walnut text-cream px-3 py-1.5 text-[0.625rem] uppercase tracking-[0.14em] font-semibold">
                   {product.categoryLabel}
                 </div>
@@ -96,11 +146,11 @@ export default function ProductPage() {
                   ))}
                 </div>
               )}
-            </div>
+            </motion.div>
 
             {/* Info */}
-            <div className="lg:col-span-5">
-              <div className="lg:sticky lg:top-24 space-y-5">
+            <motion.div variants={staggerItem} className="lg:col-span-5">
+              <div className="lg:sticky lg:top-32 space-y-8">
                 <div className="space-y-1.5">
                   <span className="text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-olive">
                     {product.categoryLabel}
@@ -213,7 +263,7 @@ export default function ProductPage() {
                 </div>
 
                 {/* Add to Cart */}
-                <button className="w-full py-3.5 bg-walnut text-cream text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors">
+                <button className="w-full mt-4 py-4 bg-walnut text-cream text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors">
                   Add to Bag
                 </button>
 
@@ -226,8 +276,8 @@ export default function ProductPage() {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </main>
       <Footer />
