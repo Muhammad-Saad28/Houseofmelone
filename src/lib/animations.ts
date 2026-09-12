@@ -101,6 +101,19 @@ export const heroImageVariants: Variants = {
   },
 };
 
+// Hero full-background image — rises from below into place
+export const heroImageRise: Variants = {
+  hidden: { y: "100%" },
+  visible: {
+    y: "0%",
+    transition: {
+      duration: 1.5,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+
 export const heroTextReveal: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
