@@ -39,6 +39,15 @@ export default function ProductPage() {
     fetchProduct();
   }, [slug]);
 
+  // Auto-cycle images every 7 seconds
+  useEffect(() => {
+    if (!product || product.images.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % product.images.length);
+    }, 7000);
+    return () => clearInterval(interval);
+  }, [product]);
+
   if (loading) {
     return (
       <>
@@ -81,22 +90,22 @@ export default function ProductPage() {
       <Header />
       <main className="flex-1">
         {/* Breadcrumb */}
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 py-3">
-          <nav className="flex items-center gap-2 text-[0.6875rem] text-deep/45">
+        <div className="container-site pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-12">
+          <nav className="flex items-center gap-3 text-[0.6875rem] uppercase tracking-[0.14em] font-medium text-olive">
             <Link href="/" className="hover:text-walnut transition-colors">
               Home
             </Link>
-            <span>/</span>
+            <span className="w-4 h-[1px] bg-sand"></span>
             <Link href="/shop" className="hover:text-walnut transition-colors">
               Shop
             </Link>
-            <span>/</span>
-            <span className="text-deep">{product.name}</span>
+            <span className="w-4 h-[1px] bg-sand"></span>
+            <span className="text-walnut font-semibold">{product.name}</span>
           </nav>
         </div>
 
         {/* Product */}
-        <div className="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 pb-24 md:pb-40 lg:pb-56">
+        <div className="container-site pb-24 md:pb-40 lg:pb-56">
           <motion.div 
             variants={staggerContainer(0.15)}
             initial="hidden"
@@ -104,16 +113,16 @@ export default function ProductPage() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24"
           >
             {/* Gallery */}
-            <motion.div variants={staggerItem} className="lg:col-span-7 space-y-4">
+            <motion.div variants={staggerItem} className="lg:col-span-6 space-y-4">
               {/* Main image */}
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-cream-dim">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-cream-dim">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeImage}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     src={product.images[activeImage]}
                     alt={product.name}
                     className="w-full h-full object-cover"
@@ -124,69 +133,108 @@ export default function ProductPage() {
                 </div>
               </div>
 
-              {/* Thumbnails */}
+              {/* Thumbnails + Progress dots */}
               {product.images.length > 1 && (
-                <div className="flex gap-2">
-                  {product.images.map((img, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveImage(i)}
-                      className={`w-16 h-20 overflow-hidden border-2 transition-colors ${
-                        i === activeImage
-                          ? "border-walnut"
-                          : "border-transparent hover:border-sand"
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt={`${product.name} ${i + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
+                <div className="space-y-3">
+                  {/* Thumbnail row */}
+                  <div className="flex gap-2">
+                    {product.images.map((img, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveImage(i)}
+                        className={`relative w-16 h-20 overflow-hidden border-2 transition-all duration-300 ${
+                          i === activeImage
+                            ? "border-walnut opacity-100"
+                            : "border-transparent opacity-50 hover:opacity-80 hover:border-sand"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`${product.name} ${i + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Progress indicator dots */}
+                  <div className="flex items-center gap-2">
+                    {product.images.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveImage(i)}
+                        className="relative h-[2px] flex-1 bg-sand/40 overflow-hidden"
+                        aria-label={`Image ${i + 1}`}
+                      >
+                        {i === activeImage && (
+                          <motion.span
+                            key={activeImage}
+                            className="absolute inset-y-0 left-0 bg-walnut"
+                            initial={{ width: "0%" }}
+                            animate={{ width: "100%" }}
+                            transition={{ duration: 7, ease: "linear" }}
+                          />
+                        )}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </motion.div>
 
             {/* Info */}
-            <motion.div variants={staggerItem} className="lg:col-span-5">
-              <div className="lg:sticky lg:top-32 space-y-8">
-                <div className="space-y-1.5">
-                  <span className="text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-olive">
+            <motion.div variants={staggerItem} className="lg:col-span-6">
+              <div className="lg:sticky lg:top-28 flex flex-col gap-8">
+
+                {/* Category label */}
+                <div className="flex items-center gap-3">
+                  <span className="w-6 h-[1px] bg-olive/50" />
+                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
                     {product.categoryLabel}
                   </span>
-                  <h1 className="font-serif text-[1.5rem] md:text-[1.875rem] lg:text-[2.125rem] leading-[1.1] tracking-[-0.02em] uppercase text-walnut">
-                    {product.name}
-                  </h1>
                 </div>
 
-                <div className="space-y-0.5">
-                  <span className="font-serif text-[1.375rem] font-medium text-walnut">
+                {/* Name */}
+                <h1 className="font-serif text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut -mt-2">
+                  {product.name}
+                </h1>
+
+                {/* Price */}
+                <div className="flex items-baseline gap-4">
+                  <p className="font-serif text-[1.625rem] text-walnut">
                     {formatPrice(product.price)}
-                  </span>
-                  <span className="text-[0.75rem] text-deep/45 ml-2">
+                  </p>
+                  <p className="text-[0.8125rem] text-olive/70 font-medium tracking-wide">
                     {formatPriceUSD(product.priceUSD)}
-                  </span>
+                  </p>
                 </div>
 
-                <p className="text-[0.875rem] leading-[1.7] text-deep/60">
+                {/* Divider */}
+                <div className="w-full h-[1px] bg-sand/50" />
+
+                {/* Description */}
+                <p className="text-[0.9375rem] leading-[1.9] text-deep/60 text-justify hyphens-auto">
                   {product.longDescription}
                 </p>
 
+                {/* Divider */}
+                <div className="w-full h-[1px] bg-sand/50" />
+
                 {/* Colors */}
                 {product.colors.length > 0 && (
-                  <div className="space-y-2.5">
-                    <span className="text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-olive block">
-                      Color — {product.colors[selectedColor].name}
+                  <div className="flex flex-col gap-4">
+                    <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                      Color &mdash;&nbsp;
+                      <span className="text-walnut">{product.colors[selectedColor].name}</span>
                     </span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-4">
                       {product.colors.map((color, i) => (
                         <button
                           key={color.name}
                           onClick={() => setSelectedColor(i)}
-                          className={`w-7 h-7 border-2 transition-colors flex items-center justify-center ${
+                          className={`w-10 h-10 border-2 transition-all duration-200 flex items-center justify-center ${
                             i === selectedColor
-                              ? "border-walnut"
+                              ? "border-walnut scale-110 shadow-md"
                               : "border-sand/60 hover:border-walnut/50"
                           }`}
                           style={{ backgroundColor: color.hex }}
@@ -217,19 +265,20 @@ export default function ProductPage() {
                 )}
 
                 {/* Sizes */}
-                <div className="space-y-2.5">
-                  <span className="text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-olive block">
-                    Size — {product.sizes[selectedSize]}
+                <div className="flex flex-col gap-4">
+                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                    Size &mdash;&nbsp;
+                    <span className="text-walnut">{product.sizes[selectedSize]}</span>
                   </span>
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-3 flex-wrap">
                     {product.sizes.map((size, i) => (
                       <button
                         key={size}
                         onClick={() => setSelectedSize(i)}
-                        className={`min-w-[40px] h-10 px-2.5 text-[0.75rem] font-medium border transition-colors ${
+                        className={`min-w-[52px] h-12 px-4 text-[0.75rem] font-semibold uppercase tracking-[0.1em] border-2 transition-all duration-200 ${
                           i === selectedSize
                             ? "bg-walnut text-cream border-walnut"
-                            : "border-sand/60 text-deep hover:border-walnut/50"
+                            : "border-sand/60 text-deep hover:border-walnut"
                         }`}
                       >
                         {size}
@@ -239,23 +288,23 @@ export default function ProductPage() {
                 </div>
 
                 {/* Quantity */}
-                <div className="space-y-2.5">
-                  <span className="text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-olive block">
+                <div className="flex flex-col gap-4">
+                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
                     Quantity
                   </span>
-                  <div className="flex items-center border border-sand/60 w-fit">
+                  <div className="flex items-center border border-sand w-fit">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="w-10 h-10 flex items-center justify-center text-deep hover:bg-cream-dim transition-colors"
+                      className="w-14 h-14 flex items-center justify-center text-xl text-deep hover:bg-cream-dim transition-colors"
                     >
-                      −
+                      &minus;
                     </button>
-                    <span className="w-10 h-10 flex items-center justify-center text-[0.875rem] font-medium border-x border-sand/60">
+                    <span className="w-14 h-14 flex items-center justify-center text-[1rem] font-medium border-x border-sand">
                       {quantity}
                     </span>
                     <button
                       onClick={() => setQuantity(quantity + 1)}
-                      className="w-10 h-10 flex items-center justify-center text-deep hover:bg-cream-dim transition-colors"
+                      className="w-14 h-14 flex items-center justify-center text-xl text-deep hover:bg-cream-dim transition-colors"
                     >
                       +
                     </button>
@@ -263,18 +312,19 @@ export default function ProductPage() {
                 </div>
 
                 {/* Add to Cart */}
-                <button className="w-full mt-4 py-4 bg-walnut text-cream text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors">
+                <button className="w-full mt-2 py-5 bg-walnut text-cream text-[0.75rem] uppercase tracking-[0.25em] font-semibold hover:bg-deep transition-colors duration-300">
                   Add to Bag
                 </button>
 
                 {/* Note */}
-                <div className="pt-2 border-t border-sand/40">
-                  <p className="text-[0.6875rem] text-deep/45 leading-relaxed">
+                <div className="border-t border-sand/30 pt-6 pb-12">
+                  <p className="text-[0.75rem] text-olive/60 leading-[1.9] text-justify">
                     Orders are reserved after receipt of a 50% advance payment.
                     Pickup available from Karachi. Contact us for international
                     shipping.
                   </p>
                 </div>
+
               </div>
             </motion.div>
           </motion.div>

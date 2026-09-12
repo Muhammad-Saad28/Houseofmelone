@@ -129,9 +129,9 @@ function ShopContent() {
                   <motion.div key={product.id} variants={staggerItem}>
                     <Link
                       href={`/products/${product.slug}`}
-                      className="group block"
+                      className="group block card-hover"
                     >
-                      <div className="relative aspect-[3/4] overflow-hidden bg-cream-dim">
+                      <div className="relative aspect-[3/4] overflow-hidden bg-cream-dim img-hover">
                         <img
                           src={product.images[0]}
                           alt={product.name}

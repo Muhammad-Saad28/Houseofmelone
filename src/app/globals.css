@@ -157,3 +157,99 @@ body {
     transition: none !important;
   }
 }
+
+/* ── Professional Image Hover ────────────────────────────── */
+/* Smooth scale + subtle brightness lift on hover */
+.img-hover {
+  overflow: hidden;
+}
+.img-hover img,
+.img-hover .img-inner {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
+}
+.img-hover:hover img,
+.img-hover:hover .img-inner {
+  transform: scale(1.04);
+  filter: brightness(1.04);
+}
+
+/* ── Shimmer Loading Skeleton ────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream-dim) 25%,
+    var(--color-cream) 50%,
+    var(--color-cream-dim) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ── Button press micro-feedback ─────────────────────────── */
+button:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* ── Link text underline slide ───────────────────────────── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Subtle page grain texture ───────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* ── Focus ring (accessibility + premium look) ───────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-walnut);
+  outline-offset: 3px;
+}
+
+/* ── Smooth image fade-in on load ────────────────────────── */
+img {
+  transition: opacity 0.4s ease;
+}
+img[loading] {
+  opacity: 0;
+}
+img.loaded,
+img:not([loading]) {
+  opacity: 1;
+}
+
+/* ── Card lift shadow on hover ───────────────────────────── */
+.card-hover {
+  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover {
+  box-shadow: 0 16px 48px -8px rgba(58, 41, 32, 0.14);
+  transform: translateY(-3px);
+}
