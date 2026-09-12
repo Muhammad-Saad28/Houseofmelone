@@ -65,7 +65,7 @@ export default function Hero({ animate = false }: HeroProps) {
           <div className="max-w-[520px]">
 
             {/* Brand label */}
-            <motion.p
+            <motion.h2
               variants={heroTextReveal}
               initial="hidden"
               animate={state}
@@ -73,10 +73,10 @@ export default function Hero({ animate = false }: HeroProps) {
               className="text-[0.6rem] sm:text-[0.6875rem] uppercase tracking-[0.32em] text-white/65 mb-6 md:mb-8 font-medium"
             >
               House of Melone
-            </motion.p>
+            </motion.h2>
 
             {/* Tagline — the hero's single headline */}
-            <motion.h1
+            <motion.h3
               variants={heroTextReveal}
               initial="hidden"
               animate={state}
@@ -89,7 +89,7 @@ export default function Hero({ animate = false }: HeroProps) {
               Sartorially
               <br />
               <span className="italic">considered.</span>
-            </motion.h1>
+            </motion.h3>
 
             {/* Thin accent line */}
             <motion.span

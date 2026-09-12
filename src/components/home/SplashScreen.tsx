@@ -27,13 +27,13 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       return;
     }
 
-    // Sequence: fade in (500ms) → hold (~2000ms) → fade out (400ms) → done
+    // Sequence: fade in (500ms) → hold (~4000ms) → fade out (400ms) → done
     const exitTimer = setTimeout(() => {
       setVisible(false);
       sessionStorage.setItem("hom-splash-done", "1");
       // Give exit animation time to finish before revealing hero
       setTimeout(onComplete, 450);
-    }, 2500);
+    }, 4500);
 
     return () => clearTimeout(exitTimer);
   }, [onComplete]);
