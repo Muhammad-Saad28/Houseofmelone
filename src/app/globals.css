@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap");
+
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F2EBDD;
+  --color-cream-50: #F7F1E5;
+  --color-cream-dim: #E8DFD1;
+  --color-walnut: #3A2920;
+  --color-sand: #CBBBA4;
+  --color-olive: #66705A;
+  --color-deep: #2D211A;
+
+  --font-serif: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-deep);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background-color: var(--color-walnut);
+  color: var(--color-cream);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Container ───────────────────────────────────────────── */
+.container-site {
+  width: 100%;
+  max-width: 1340px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .container-site {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-site {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+/* ── Overflow wrap ──────────────────────────────────────── */
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ── Divider line ────────────────────────────────────────── */
+.divider-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-walnut);
+}
+
+/* ── Marquee LTR ─────────────────────────────────────────────── */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-ltr {
+  animation: marquee-ltr 45s linear infinite;
+}
+
+/* ── Nav underline hover ─────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-walnut);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Section spacing ─────────────────────────────────────── */
+.section-py {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .section-py {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-py {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
+}
+
+/* ── Reduced Motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee-ltr {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .nav-link::after {
+    transition: none !important;
+  }
+}
