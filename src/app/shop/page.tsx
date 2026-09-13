@@ -168,10 +168,17 @@ function ShopContent() {
           <section className="w-full bg-cream pb-24 md:pb-40 lg:pb-56">
             <div className="container-site">
               {loading ? (
-                <div className="text-center py-24">
-                  <span className="text-[0.625rem] uppercase tracking-[0.14em] text-olive">
-                    Loading products...
-                  </span>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-14 lg:gap-x-9 lg:gap-y-16">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={i} className="animate-pulse">
+                      <div className="relative aspect-[3/4] bg-sand/40 mb-4 md:mb-5"></div>
+                      <div className="space-y-2.5">
+                        <div className="h-2 bg-sand/40 w-1/3"></div>
+                        <div className="h-3 bg-sand/40 w-3/4"></div>
+                        <div className="h-3 bg-sand/40 w-1/4 mt-1.5"></div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ) : filtered.length === 0 ? (
                 <div className="text-center py-24">

@@ -33,9 +33,14 @@ export default function Footer() {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.7, ease: editorialEase }}
-      className="bg-[#241914] text-[#fff8f3]"
+      className="bg-[#241914] text-[#fff8f3] relative overflow-hidden"
     >
-      <div className="container-site pt-16 sm:pt-20 pb-8">
+      {/* Same crosshatch texture as the auth panel */}
+      <div
+        className="absolute inset-0 opacity-[0.045] pointer-events-none"
+        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
+      />
+      <div className="relative container-site pt-16 sm:pt-20 pb-8">
         <br></br>
         {/* ── Main grid: 4 columns matching reference layout ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 xl:gap-x-14 gap-y-14 pb-14 border-b border-[#fff8f3]/10">
@@ -43,12 +48,12 @@ export default function Footer() {
           {/* ── Col 1: Brand + tagline + description + newsletter ── */}
           <div className="flex flex-col gap-0">
             {/* Brand label */}
-            <p className="font-sans text-[0.6rem] uppercase tracking-[0.28em] text-[#d2c4be] mb-4 font-medium">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.28em] text-[#d2c4be] mb-8 font-medium">
               House of Melone
             </p>
 
             {/* Large serif tagline */}
-            <h3 className="font-serif font-light text-[1.75rem] sm:text-[2rem] tracking-[0.08em] uppercase leading-[1.1] text-[#fff8f3] mb-5">
+            <h3 className="font-serif font-light text-[1.75rem] sm:text-[2rem] tracking-[0.08em] uppercase leading-[1.1] text-[#fff8f3] mb-10">
               Sartorially
               <br />
               Considered.

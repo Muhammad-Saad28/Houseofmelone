@@ -114,43 +114,42 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
 
   const GoogleIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
     </svg>
   );
 
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center p-4 sm:p-8 font-sans">
-      <div className="relative w-full max-w-[850px] min-h-[550px] bg-white rounded-[2rem] shadow-[0_8px_40px_-12px_rgba(58,41,32,0.12)] overflow-hidden flex border border-sand/40">
+      <div className="relative w-full max-w-[850px] min-h-[550px] bg-[#EAE0D5] rounded-[2rem] shadow-[0_8px_40px_-12px_rgba(58,41,32,0.12)] overflow-hidden flex border border-sand/40">
 
         {/* --- Sign In Form (Left Side) --- */}
-        <div className={`absolute top-0 left-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 -translate-x-10 pointer-events-none"}`}>
+        <div className={`absolute top-0 left-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 -translate-x-10 pointer-events-none"}`}>
           <div className="w-full max-w-[380px] flex flex-col items-center">
-            {/* Overline */}
-            <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-5">
+            <p className="font-serif font-light text-[1.25rem] md:text-[1.5rem] text-walnut tracking-[-0.01em] mb-5">
               Welcome back
             </p>
-            <br></br>
-            
+            <br />
+
             <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-8 text-center">
               Sign In
             </h1>
             <br></br>
-            
+
             {/* Google button */}
             <button
               onClick={handleGoogleLogin}
               disabled={googleLoading}
               type="button"
-              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-[1.375rem] border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
+              className="w-1/2 mx-auto py-[1.75rem] border border-sand/60 rounded-xl text-deep font-sans text-[0.5899rem] uppercase tracking-[0.18em] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3"
             >
               <GoogleIcon />
               {googleLoading ? "Connecting..." : "Continue with Google"}
             </button>
             <br></br>
-            
+
             <div className="flex items-center gap-3 w-full my-7">
               <div className="flex-1 h-[1px] bg-sand/40" />
               <span className="font-sans text-[0.625rem] uppercase tracking-[0.12em] text-walnut/40 font-medium">or</span>
@@ -161,14 +160,14 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <p className="font-sans text-[0.75rem] text-red-600 mb-4 text-center font-medium">{loginError}</p>
             )}
 
-            <form onSubmit={handleLogin} className="w-full flex flex-col gap-6">
+            <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-6">
               <input
                 type="email"
                 placeholder="Email"
                 required
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-8 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
               <input
                 type="password"
@@ -176,7 +175,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                 required
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-8 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
 
               <div className="flex justify-end w-full">
@@ -188,7 +187,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full py-[1.375rem] bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl mt-1"
+                className="w-1/2 mx-auto py-[3.25rem] bg-walnut text-cream font-sans text-[0.875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl mt-1"
               >
                 {loginLoading ? "Signing in..." : "Sign In"}
               </button>
@@ -197,26 +196,29 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
         </div>
 
         {/* --- Sign Up Form (Right Side) --- */}
-        <div className={`absolute top-0 right-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${!isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 translate-x-10 pointer-events-none"}`}>
+        <div className={`absolute top-0 right-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${!isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 translate-x-10 pointer-events-none"}`}>
           <div className="w-full max-w-[380px] flex flex-col items-center">
             {/* Overline */}
             <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-5">
               New here?
             </p>
+            <br></br>
             <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-8 text-center">
               Create Account
             </h1>
+            <br></br>
 
             {/* Google button */}
             <button
               onClick={handleGoogleLogin}
               disabled={googleLoading}
               type="button"
-              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-[1.375rem] border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
+              className="w-1/2 mx-auto py-[1.75rem] border border-sand/60 rounded-xl text-deep font-sans text-[0.5899rem] uppercase tracking-[0.18em] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3"
             >
               <GoogleIcon />
               {googleLoading ? "Connecting..." : "Continue with Google"}
             </button>
+            <br></br>
 
             <div className="flex items-center gap-3 w-full my-7">
               <div className="flex-1 h-[1px] bg-sand/40" />
@@ -231,14 +233,14 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <p className="font-sans text-[0.75rem] text-olive mb-3 text-center font-medium">{signupSuccess}</p>
             )}
 
-            <form onSubmit={handleSignup} className="w-full flex flex-col gap-5">
+            <form onSubmit={handleSignup} className="w-full flex flex-col items-center gap-5">
               <input
                 type="text"
                 placeholder="Full name"
                 required
                 value={signupName}
                 onChange={(e) => setSignupName(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-8 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
               <input
                 type="email"
@@ -246,9 +248,9 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                 required
                 value={signupEmail}
                 onChange={(e) => setSignupEmail(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-8 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
-              <div>
+              <div className="w-full">
                 <input
                   type="password"
                   placeholder="Password"
@@ -256,7 +258,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                   minLength={8}
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                  className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-8 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
                 />
                 <p className="font-sans text-[0.5625rem] text-walnut/45 mt-1.5 pl-1">
                   Minimum 8 characters
@@ -266,7 +268,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <button
                 type="submit"
                 disabled={signupLoading}
-                className="w-full mt-1 py-[1.375rem] bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl"
+                className="w-1/2 mx-auto mt-1 py-[3.25rem] bg-walnut text-cream font-sans text-[0.875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl"
               >
                 {signupLoading ? "Creating..." : "Create Account"}
               </button>
@@ -276,7 +278,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
 
         {/* --- Dark Overlay Slider --- */}
         <div
-          className={`absolute top-0 left-0 w-1/2 h-full bg-walnut text-cream transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center overflow-hidden z-20 ${isLogin ? "translate-x-full rounded-l-[2rem]" : "translate-x-0 rounded-r-[2rem]"}`}
+          className={`absolute top-0 left-0 w-1/2 h-full bg-walnut text-cream transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center justify-center overflow-hidden z-20 ${isLogin ? "translate-x-full rounded-l-[2rem]" : "translate-x-0 rounded-r-[2rem]"}`}
           style={{
             boxShadow: isLogin ? "-12px 0 40px rgba(58,41,32,0.15)" : "12px 0 40px rgba(58,41,32,0.15)"
           }}
@@ -286,52 +288,44 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
 
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Panel shown when Login is active */}
-            <div className={`absolute w-full px-10 sm:px-12 flex flex-col items-center text-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLogin ? "opacity-100 translate-x-0 delay-100" : "opacity-0 -translate-x-12 pointer-events-none"}`}>
-              <p className="font-sans text-[0.5625rem] uppercase tracking-[0.3em] text-cream/50 font-medium mb-5">
+            <div className={`absolute inset-0 flex flex-col items-center justify-center text-center px-10 sm:px-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${isLogin ? "opacity-100 translate-x-0 delay-100" : "opacity-0 -translate-x-12 pointer-events-none"}`}>
+              <p className="font-serif font-bold text-[1.75rem] md:text-[2rem] tracking-[0.04em] text-cream mb-0">
                 House of Melone
               </p>
+              <br />
+              <br />
               <h2 className="text-[2rem] md:text-[2.25rem] font-serif font-light mb-8 text-cream leading-[1.1] tracking-[-0.01em]">
                 Welcome back
               </h2>
-              <Image
-                src="/logo.png"
-                alt="House of Melone Logo"
-                width={64}
-                height={64}
-                className="mb-6 invert opacity-80 object-contain"
-              />
               <p className="font-serif font-light text-[1.375rem] tracking-[0.02em] mb-10 text-cream/80">
                 Sartorially considered.
               </p>
+              <br />
               <button
                 onClick={toggleMode}
-                className="px-8 py-3.5 border border-cream/30 text-cream font-sans text-[0.6875rem] uppercase tracking-[0.2em] font-medium hover:bg-cream hover:text-walnut transition-all duration-300 rounded-full"
+                className="min-w-[200px] px-10 py-5 border border-cream/30 text-cream font-sans text-[0.75rem] uppercase tracking-[0.25em] font-medium hover:bg-cream hover:text-walnut transition-all duration-300 rounded-full whitespace-nowrap"
               >
                 Sign Up
               </button>
             </div>
 
             {/* Panel shown when Signup is active */}
-            <div className={`absolute w-full px-10 sm:px-12 flex flex-col items-center text-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${!isLogin ? "opacity-100 translate-x-0 delay-100" : "opacity-0 translate-x-12 pointer-events-none"}`}>
-              <p className="font-sans text-[0.5625rem] uppercase tracking-[0.3em] text-cream/50 font-medium mb-5">
+            <div className={`absolute inset-0 flex flex-col items-center justify-center text-center px-10 sm:px-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${!isLogin ? "opacity-100 translate-x-0 delay-100" : "opacity-0 translate-x-12 pointer-events-none"}`}>
+              <p className="font-serif font-bold text-[1.75rem] md:text-[2rem] tracking-[0.04em] text-cream mb-0">
                 House of Melone
               </p>
+              <br />
+              <br />
               <h2 className="text-[2rem] md:text-[2.25rem] font-serif font-light mb-8 text-cream leading-[1.1] tracking-[-0.01em]">
                 Welcome
               </h2>
-              <Image
-                src="/logo.png"
-                alt="House of Melone Logo"
-                width={64}
-                height={64}
-                className="mb-6 invert opacity-80 object-contain"
-              />
               <p className="font-serif font-light text-[1.375rem] tracking-[0.02em] mb-10 text-cream/80">
                 Quietly refined. Distinctly yours.
               </p>
+              <br />
               <button
                 onClick={toggleMode}
-                className="px-8 py-3.5 border border-cream/30 text-cream font-sans text-[0.6875rem] uppercase tracking-[0.2em] font-medium hover:bg-cream hover:text-walnut transition-all duration-300 rounded-full"
+                className="min-w-[200px] px-10 py-5 border border-cream/30 text-cream font-sans text-[0.75rem] uppercase tracking-[0.25em] font-medium hover:bg-cream hover:text-walnut transition-all duration-300 rounded-full whitespace-nowrap"
               >
                 Sign In
               </button>

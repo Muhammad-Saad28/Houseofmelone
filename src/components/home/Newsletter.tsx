@@ -16,7 +16,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section ref={ref} className="w-full bg-sand border-t border-walnut/10">
+    <section ref={ref} className="w-full bg-[#EAE0D5] border-t border-walnut/10">
       <div className="container-site py-24 md:py-32 lg:py-40 flex flex-col items-center justify-center text-center">
         <br></br>
         <div className="max-w-[720px] w-full flex flex-col items-center">
