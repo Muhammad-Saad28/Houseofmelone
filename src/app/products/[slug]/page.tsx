@@ -128,9 +128,7 @@ export default function ProductPage() {
                     className="w-full h-full object-cover"
                   />
                 </AnimatePresence>
-                <div className="absolute top-4 left-4 bg-walnut text-cream px-3 py-1.5 text-[0.625rem] uppercase tracking-[0.14em] font-semibold">
-                  {product.categoryLabel}
-                </div>
+
               </div>
 
               {/* Thumbnails + Progress dots */}

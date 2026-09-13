@@ -6,8 +6,8 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import CategoryMarquee from "@/components/home/CategoryMarquee";
 import ProductFeature from "@/components/home/ProductFeature";
-import ProductCarousel from "@/components/home/ProductCarousel";
 import ShopTheCollection from "@/components/home/ShopTheCollection";
+import Newsletter from "@/components/home/Newsletter";
 import SplashScreen from "@/components/home/SplashScreen";
 import CartDrawer from "@/components/cart/CartDrawer";
 import { Product } from "@/types";
@@ -27,7 +27,6 @@ export default function Home() {
   >([]);
   const [heroReady, setHeroReady] = useState(false);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const [carouselProducts, setCarouselProducts] = useState<Product[]>([]);
 
   const handleSplashComplete = useCallback(() => {
     setHeroReady(true);
@@ -38,12 +37,8 @@ export default function Home() {
       try {
         const res = await fetch("/api/products");
         const data = await res.json();
-        
-        // Take first 4 for the vertical feature layout
+        // First 4 featured products for the alternating editorial layout
         setFeaturedProducts(data.slice(0, 4));
-        
-        // Take next 8 for the fade carousel
-        setCarouselProducts(data.slice(4, 12));
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -56,21 +51,19 @@ export default function Home() {
       {/* Splash — shows once per session, then reveals hero */}
       <SplashScreen onComplete={handleSplashComplete} />
 
+      {/* Fixed navbar — transparent over hero, cream on scroll */}
       <Header />
 
       <main className="flex-1">
-        {/* 1. HERO */}
+        {/* 1. HERO — full-viewport, overlaps the header spacer */}
         <Hero animate={heroReady} />
 
         {/* 2. CATEGORY CAROUSEL */}
         <CategoryMarquee />
 
-        {/* Spacer between carousel and products */}
-        <div className="h-20 md:h-32 lg:h-44" />
-
-        {/* 3. FEATURED PRODUCTS (Alternating Layout - 4 items) */}
-        <section className="w-full bg-cream pb-24 md:pb-40 lg:pb-56">
-          <div className="container-site flex flex-col gap-28 md:gap-44 lg:gap-60">
+        {/* 3. FEATURED PRODUCTS — alternating IMAGE|TEXT layout */}
+        <section className="w-full bg-cream py-20 md:py-32 lg:py-48">
+          <div className="container-site flex flex-col gap-24 md:gap-40 lg:gap-56">
             {featuredProducts.map((product, index) => (
               <ProductFeature
                 key={product.id}
@@ -82,26 +75,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. CAROUSEL OF 8 PRODUCTS */}
-        {carouselProducts.length > 0 && (
-          <ProductCarousel products={carouselProducts} />
-        )}
-
-        {/* 5. SHOP THE COLLECTION */}
+        {/* 4. SHOP THE COLLECTION — 4-col / 2-col product grid */}
         <ShopTheCollection />
 
-        {/* Spacer between collection and footer */}
-        <div className="h-20 md:h-32 lg:h-44" />
+        {/* 5. NEWSLETTER */}
+        <Newsletter />
       </main>
 
-      {/* 5. FOOTER */}
+      {/* 6. FOOTER */}
       <Footer />
 
       <CartDrawer
         isOpen={cartOpen}
         onClose={() => setCartOpen(false)}
         items={cartItems}
-        onRemove={(id) => setCartItems((prev) => prev.filter((item) => item.id !== id))}
+        onRemove={(id) =>
+          setCartItems((prev) => prev.filter((item) => item.id !== id))
+        }
       />
     </>
   );

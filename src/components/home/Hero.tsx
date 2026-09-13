@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { heroImageRise, heroTextReveal, heroDescriptionReveal, editorialEase } from "@/lib/animations";
+import {
+  heroImageEnter,
+  heroTextReveal,
+  heroLinePrimary,
+  heroLineSecondary,
+  editorialEase,
+} from "@/lib/animations";
 
 interface HeroProps {
   animate?: boolean;
@@ -12,45 +18,40 @@ export default function Hero({ animate = false }: HeroProps) {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden -mt-20 lg:-mt-[84px]"
       style={{ height: "100svh", minHeight: "560px", maxHeight: "1000px" }}
     >
-      {/* ── Background image — rises from bottom ── */}
-      {/*
-        Outer wrapper: clips the rising image so it doesn't bleed outside
-        the section during its travel. overflow-hidden is on this div, NOT
-        on the section (the section needs to be a normal block element so
-        the next section follows naturally without a gap).
-      */}
+      {/* ── Background image — enters from left ── */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute inset-0 will-change-transform"
-          variants={heroImageRise}
+          variants={heroImageEnter}
           initial="hidden"
           animate={state}
         >
-          {/* Slight scale-up so no blank stripe is visible at start of rise */}
+          {/*
+            Ken Burns drift starts at 1400ms and runs for 9s (see globals.css .animate-hero-drift).
+            The class is applied only after the entrance animation completes.
+          */}
           <img
             src="/hero-bg.jpg"
             alt="House of Melone — Heritage Menswear"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: "60% center",
-            }}
+            className={`absolute inset-0 w-full h-full object-cover${animate ? " animate-hero-drift" : ""}`}
+            style={{ objectPosition: "60% center" }}
             draggable={false}
           />
         </motion.div>
 
-        {/* ── Left overlay: keeps text readable without darkening photo ── */}
+        {/* ── Left overlay: keeps text readable ── */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to right, rgba(20,12,8,0.62) 0%, rgba(20,12,8,0.32) 45%, transparent 72%)",
+              "linear-gradient(to right, rgba(20,12,8,0.65) 0%, rgba(20,12,8,0.35) 45%, transparent 72%)",
           }}
         />
 
-        {/* ── Bottom fade into next section background colour ── */}
+        {/* ── Bottom fade into next section ── */}
         <div
           className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
           style={{
@@ -62,41 +63,56 @@ export default function Hero({ animate = false }: HeroProps) {
       {/* ── Text — left-aligned, vertically centred ── */}
       <div className="relative z-10 h-full flex items-center">
         <div className="container-site w-full">
-          <div className="max-w-[520px]">
+          <div className="max-w-[560px]">
 
-            {/* Brand label */}
-            <motion.h2
+            {/* Brand label — 850ms */}
+            <motion.p
               variants={heroTextReveal}
               initial="hidden"
               animate={state}
-              transition={{ duration: 0.7, ease: editorialEase, delay: 0.55 }}
-              className="text-[0.6rem] sm:text-[0.6875rem] uppercase tracking-[0.32em] text-white/65 mb-6 md:mb-8 font-medium"
+              transition={{ duration: 0.6, ease: editorialEase, delay: 0.85 }}
+              className="text-[0.875rem] sm:text-[1rem] uppercase tracking-[0.3em] text-white/90 mb-6 md:mb-8 font-semibold"
             >
-              House of Melone
-            </motion.h2>
+              HOUSE OF MELONE
+            </motion.p>
 
-            {/* Tagline — the hero's single headline */}
-            <motion.h3
-              variants={heroTextReveal}
-              initial="hidden"
-              animate={state}
-              transition={{ duration: 0.85, ease: editorialEase, delay: 0.72 }}
-              className="font-serif font-light text-white leading-[1.08] tracking-[0.04em]"
-              style={{
-                fontSize: "clamp(2.6rem, 5.5vw, 5.5rem)",
-              }}
+            {/* Tagline — split into two lines for staggered reveal */}
+            <h1
+              className="font-serif font-light text-white leading-[1.06] tracking-[0.03em] overflow-hidden"
+              style={{ fontSize: "clamp(2.6rem, 5.5vw, 5.5rem)" }}
             >
-              Sartorially
-              <br />
-              <span className="italic">considered.</span>
-            </motion.h3>
+              {/* "Sartorially" — 1000ms */}
+              <motion.span
+                className="block"
+                variants={heroLinePrimary}
+                initial="hidden"
+                animate={state}
+              >
+                Sartorially
+              </motion.span>
 
-            {/* Thin accent line */}
+              {/* "considered." — 1150ms */}
+              <motion.span
+                className="block"
+                variants={heroLineSecondary}
+                initial="hidden"
+                animate={state}
+              >
+                considered.
+              </motion.span>
+            </h1>
+
+            {/* Divider — draws left→right at 1300ms */}
             <motion.span
               initial={{ scaleX: 0, opacity: 0 }}
-              animate={animate ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
-              transition={{ duration: 0.9, ease: editorialEase, delay: 1.05 }}
-              className="block mt-8 md:mt-10 w-10 md:w-14 h-[1px] bg-white/35 origin-left"
+              animate={
+                animate
+                  ? { scaleX: 1, opacity: 1 }
+                  : { scaleX: 0, opacity: 0 }
+              }
+              transition={{ duration: 0.7, ease: editorialEase, delay: 1.3 }}
+              className="block mt-8 md:mt-10 h-[1px] bg-white/30 origin-left"
+              style={{ width: "70px" }}
             />
 
           </div>

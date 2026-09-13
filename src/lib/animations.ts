@@ -56,7 +56,29 @@ export const scaleReveal: Variants = {
   },
 };
 
-// ─── Product section variants ───────────────────────────────
+// ─── Scroll-reveal variants (unified system for all sections) ───
+// Text: opacity 0→1, y 20→0
+export const revealText: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: editorialEase },
+  },
+};
+
+// Image: opacity 0→1, scale 1.04→1, y 15→0 — starts 200ms after text
+export const revealImage: Variants = {
+  hidden: { opacity: 0, scale: 1.04, y: 15 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: editorialEase, delay: 0.2 },
+  },
+};
+
+// ─── Product section variants (aliases for backward compat) ────
 export const productTextVariants: Variants = {
   hidden: { opacity: 0, y: 35 },
   visible: {
@@ -82,6 +104,7 @@ export const productImageVariants: Variants = {
   },
 };
 
+
 // ─── Hero entrance variants ─────────────────────────────────
 // Image enters from LEFT inside its clipped container
 export const heroImageVariants: Variants = {
@@ -101,17 +124,21 @@ export const heroImageVariants: Variants = {
   },
 };
 
-// Hero full-background image — rises from below into place
-export const heroImageRise: Variants = {
-  hidden: { y: "100%" },
+// Hero full-background image — rises from bottom, settles at ~1000ms
+export const heroImageEnter: Variants = {
+  hidden: { y: "25%", opacity: 0 },
   visible: {
     y: "0%",
+    opacity: 1,
     transition: {
-      duration: 1.5,
+      duration: 1.0,
       ease: [0.16, 1, 0.3, 1],
     },
   },
 };
+
+/** @deprecated kept for backward compat — use heroImageEnter */
+export const heroImageRise = heroImageEnter;
 
 
 export const heroTextReveal: Variants = {
@@ -123,6 +150,25 @@ export const heroTextReveal: Variants = {
       duration: 0.7,
       ease: editorialEase,
     },
+  },
+};
+
+// Individual hero tagline lines — used for the split "Sartorially" / "considered." reveal
+export const heroLinePrimary: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: editorialEase, delay: 1.0 },
+  },
+};
+
+export const heroLineSecondary: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: editorialEase, delay: 1.15 },
   },
 };
 
