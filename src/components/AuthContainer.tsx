@@ -127,12 +127,12 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
 
         {/* --- Sign In Form (Left Side) --- */}
         <div className={`absolute top-0 left-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 -translate-x-10 pointer-events-none"}`}>
-          <div className="w-full max-w-[340px] flex flex-col items-center">
+          <div className="w-full max-w-[380px] flex flex-col items-center">
             {/* Overline */}
-            <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-3">
+            <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-5">
               Welcome back
             </p>
-            <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-6 text-center">
+            <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-8 text-center">
               Sign In
             </h1>
 
