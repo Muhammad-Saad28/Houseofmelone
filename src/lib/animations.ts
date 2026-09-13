@@ -159,7 +159,7 @@ export const heroLinePrimary: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: editorialEase, delay: 1.0 },
+    transition: { duration: 0.65, ease: editorialEase, delay: 1.55 },
   },
 };
 
@@ -168,7 +168,7 @@ export const heroLineSecondary: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: editorialEase, delay: 1.15 },
+    transition: { duration: 0.65, ease: editorialEase, delay: 1.75 },
   },
 };
 
