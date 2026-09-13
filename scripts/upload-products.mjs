@@ -21,7 +21,7 @@ const CATEGORY_MAP = {
   "Shalwar Kameez": "shalwar-kameez",
   "Pants": "pants",
   "Charsadda Panjedar Chappal": "chappal",
-  "Caps": "chappal",
+  "Caps": "caps",
 };
 
 function slugify(text) {
@@ -71,7 +71,7 @@ async function uploadProducts() {
     if (!handle) continue;
 
     if (!productMap[handle]) {
-      const catSlug = CATEGORY_MAP[row["Product Category"]] || "shalwar-kameez";
+      const catSlug = CATEGORY_MAP[row["Type"]] || "shalwar-kameez";
       const categoryId = categoryMap[catSlug] || null;
 
       productMap[handle] = {

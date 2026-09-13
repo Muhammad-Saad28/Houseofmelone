@@ -23,11 +23,11 @@ export default function BrandStory() {
             >
               <div className="flex items-center gap-3">
                 <span className="divider-line" />
-                <span className="text-[0.625rem] uppercase tracking-[0.16em] font-semibold text-olive">
+                <span className="font-sans text-[0.625rem] uppercase tracking-[0.16em] font-medium text-olive">
                   The House Philosophy
                 </span>
               </div>
-              <h2 className="font-serif text-[1.75rem] md:text-[2.125rem] lg:text-[2.5rem] leading-[1.08] tracking-[-0.02em] uppercase text-walnut">
+              <h2 className="font-serif font-light text-[1.75rem] md:text-[2.125rem] lg:text-[2.5rem] leading-[1.08] tracking-[-0.02em] uppercase text-walnut">
                 Fashion Should<br />Outlast Trends.
               </h2>
             </motion.div>
@@ -36,7 +36,7 @@ export default function BrandStory() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="space-y-4 text-[0.9rem] leading-[1.8] text-deep/55"
+              className="space-y-4 font-sans text-[0.9rem] leading-[1.8] text-deep/55 font-medium"
             >
               <p>
                 House of Melone was founded on a singular conviction: that
@@ -63,10 +63,10 @@ export default function BrandStory() {
                 { value: "Karachi", label: "Based in Pakistan" },
               ].map((stat) => (
                 <div key={stat.label} className="pt-5">
-                  <span className="font-serif text-[1.375rem] font-medium text-walnut block">
+                  <span className="font-serif font-light text-[1.375rem] text-walnut block">
                     {stat.value}
                   </span>
-                  <p className="text-[0.5625rem] uppercase tracking-[0.12em] text-olive/80 mt-1 leading-tight">
+                  <p className="font-sans text-[0.5625rem] uppercase tracking-[0.12em] text-olive/80 mt-1 leading-tight font-medium">
                     {stat.label}
                   </p>
                 </div>
@@ -108,7 +108,7 @@ export default function BrandStory() {
                     &ldquo;Discipline is the purest expression of
                     luxury.&rdquo;
                   </blockquote>
-                  <span className="text-[0.5625rem] uppercase tracking-[0.18em] text-cream/45 mt-3 block">
+                  <span className="font-sans text-[0.5625rem] uppercase tracking-[0.18em] text-cream/45 mt-3 block font-medium">
                     House of Melone
                   </span>
                 </div>

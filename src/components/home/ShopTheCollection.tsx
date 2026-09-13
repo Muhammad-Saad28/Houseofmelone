@@ -56,14 +56,14 @@ export default function ShopTheCollection() {
         >
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-5">
             <span className="w-5 md:w-10 h-[1px] bg-walnut/25" />
-            <span className="text-[0.5rem] md:text-[0.625rem] uppercase tracking-[0.22em] text-olive font-medium">
+            <span className="font-sans text-[0.5rem] md:text-[0.625rem] uppercase tracking-[0.22em] text-olive font-medium">
               The Edit
             </span>
           </div>
-          <h2 className="font-serif text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-4 md:mb-6">
+          <h2 className="font-serif font-light text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-4 md:mb-6">
             Shop The Collection
           </h2>
-          <p className="text-[0.65rem] sm:text-[0.75rem] md:text-[0.875rem] leading-[1.7] text-deep/45 max-w-[360px] text-justify hyphens-auto mx-auto">
+          <p className="font-sans text-[0.65rem] sm:text-[0.75rem] md:text-[0.875rem] leading-[1.7] text-deep/45 max-w-[360px] text-justify hyphens-auto mx-auto font-medium">
             Selected House of Melone essentials, curated for you.
           </p>
         </motion.div>
@@ -96,14 +96,14 @@ export default function ShopTheCollection() {
 
                   {/* Info */}
                   <div className="px-0.5">
-                    <h3 className="font-serif text-[0.8rem] sm:text-[0.9rem] md:text-[1rem] lg:text-[1.05rem] leading-[1.15] text-walnut uppercase tracking-[-0.01em] mb-1 md:mb-1.5 transition-colors duration-300 group-hover/card:text-deep">
+                    <h3 className="font-serif font-light text-[0.8rem] sm:text-[0.9rem] md:text-[1rem] lg:text-[1.05rem] leading-[1.15] text-walnut uppercase tracking-[-0.01em] mb-1 md:mb-1.5 transition-colors duration-300 group-hover/card:text-deep">
                       {product.name}
                       {/* Arrow appears on hover */}
                       <span className="inline-block ml-1.5 opacity-0 translate-x-0 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 transition-all duration-300 text-[0.6em]">
                         →
                       </span>
                     </h3>
-                    <p className="text-[0.6rem] md:text-[0.7rem] text-deep/40 font-medium">
+                    <p className="font-sans text-[0.6rem] md:text-[0.7rem] text-deep/40 font-medium">
                       {formatPrice(product.price)}
                     </p>
                   </div>
@@ -134,7 +134,7 @@ export default function ShopTheCollection() {
         <div className="mt-12 md:mt-20 text-center relative z-10">
           <Link
             href="/shop"
-            className="group/view inline-flex items-center gap-2.5 text-[0.6rem] md:text-[0.6875rem] uppercase tracking-[0.18em] text-walnut/60 hover:text-walnut font-medium transition-colors duration-300"
+            className="group/view inline-flex items-center gap-2.5 font-sans text-[0.6rem] md:text-[0.6875rem] uppercase tracking-[0.18em] text-walnut/60 hover:text-walnut font-medium transition-colors duration-300"
           >
             <span className="nav-link-slide">View All Products</span>
             <svg

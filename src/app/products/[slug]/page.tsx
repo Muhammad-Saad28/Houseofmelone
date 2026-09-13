@@ -52,13 +52,15 @@ export default function ProductPage() {
     return (
       <>
         <Header />
-        <main className="flex-1 flex items-center justify-center py-32">
-          <div className="text-center">
-            <span className="text-[0.625rem] uppercase tracking-[0.14em] text-olive">
-              Loading...
-            </span>
-          </div>
-        </main>
+        <div id="page-content">
+          <main className="flex-1 flex items-center justify-center py-32">
+            <div className="text-center">
+              <span className="font-sans text-[0.625rem] uppercase tracking-[0.14em] text-olive font-medium">
+                Loading...
+              </span>
+            </div>
+          </main>
+        </div>
         <Footer />
       </>
     );
@@ -68,18 +70,20 @@ export default function ProductPage() {
     return (
       <>
         <Header />
-        <main className="flex-1 flex items-center justify-center py-32">
-          <div className="text-center space-y-4">
-            <h1 className="font-serif text-[1.75rem] text-walnut">Product Not Found</h1>
-            <p className="text-deep/55 text-[0.875rem]">The product you&apos;re looking for doesn&apos;t exist.</p>
-            <Link
-              href="/shop"
-              className="inline-flex items-center px-7 py-3.5 bg-walnut text-cream text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors mt-4"
-            >
-              Back to Shop
-            </Link>
-          </div>
-        </main>
+        <div id="page-content">
+          <main className="flex-1 flex items-center justify-center py-32">
+            <div className="text-center space-y-4">
+              <h1 className="font-serif font-light text-[1.75rem] text-walnut">Product Not Found</h1>
+              <p className="font-sans text-deep/55 text-[0.875rem] font-medium">The product you&apos;re looking for doesn&apos;t exist.</p>
+              <Link
+                href="/shop"
+                className="inline-flex items-center px-7 py-3.5 bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors mt-4"
+              >
+                Back to Shop
+              </Link>
+            </div>
+          </main>
+        </div>
         <Footer />
       </>
     );
@@ -88,10 +92,11 @@ export default function ProductPage() {
   return (
     <>
       <Header />
-      <main className="flex-1">
+      <div id="page-content">
+        <main className="flex-1">
         {/* Breadcrumb */}
-        <div className="container-site pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-12">
-          <nav className="flex items-center gap-3 text-[0.6875rem] uppercase tracking-[0.14em] font-medium text-olive">
+        <div className="container-site pb-8 md:pb-12">
+          <nav className="flex items-center gap-3 font-sans text-[0.6875rem] uppercase tracking-[0.14em] font-medium text-olive">
             <Link href="/" className="hover:text-walnut transition-colors">
               Home
             </Link>
@@ -187,22 +192,22 @@ export default function ProductPage() {
                 {/* Category label */}
                 <div className="flex items-center gap-3">
                   <span className="w-6 h-[1px] bg-olive/50" />
-                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                  <span className="font-sans text-[0.625rem] uppercase tracking-[0.25em] font-medium text-olive">
                     {product.categoryLabel}
                   </span>
                 </div>
 
                 {/* Name */}
-                <h1 className="font-serif text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut -mt-2">
+                <h1 className="font-serif font-light text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut -mt-2">
                   {product.name}
                 </h1>
 
                 {/* Price */}
                 <div className="flex items-baseline gap-4">
-                  <p className="font-serif text-[1.625rem] text-walnut">
+                  <p className="font-sans text-[1.625rem] font-medium text-walnut">
                     {formatPrice(product.price)}
                   </p>
-                  <p className="text-[0.8125rem] text-olive/70 font-medium tracking-wide">
+                  <p className="font-sans text-[0.8125rem] text-olive/70 font-medium tracking-wide">
                     {formatPriceUSD(product.priceUSD)}
                   </p>
                 </div>
@@ -211,7 +216,7 @@ export default function ProductPage() {
                 <div className="w-full h-[1px] bg-sand/50" />
 
                 {/* Description */}
-                <p className="text-[0.9375rem] leading-[1.9] text-deep/60 text-justify hyphens-auto">
+                <p className="font-sans text-[0.9375rem] leading-[1.9] text-deep/60 text-justify hyphens-auto font-medium">
                   {product.longDescription}
                 </p>
 
@@ -221,7 +226,7 @@ export default function ProductPage() {
                 {/* Colors */}
                 {product.colors.length > 0 && (
                   <div className="flex flex-col gap-4">
-                    <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                    <span className="font-sans text-[0.625rem] uppercase tracking-[0.25em] font-medium text-olive">
                       Color &mdash;&nbsp;
                       <span className="text-walnut">{product.colors[selectedColor].name}</span>
                     </span>
@@ -264,7 +269,7 @@ export default function ProductPage() {
 
                 {/* Sizes */}
                 <div className="flex flex-col gap-4">
-                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                  <span className="font-sans text-[0.625rem] uppercase tracking-[0.25em] font-medium text-olive">
                     Size &mdash;&nbsp;
                     <span className="text-walnut">{product.sizes[selectedSize]}</span>
                   </span>
@@ -273,7 +278,7 @@ export default function ProductPage() {
                       <button
                         key={size}
                         onClick={() => setSelectedSize(i)}
-                        className={`min-w-[52px] h-12 px-4 text-[0.75rem] font-semibold uppercase tracking-[0.1em] border-2 transition-all duration-200 ${
+                        className={`min-w-[52px] h-12 px-4 font-sans text-[0.75rem] font-semibold uppercase tracking-[0.1em] border-2 transition-all duration-200 ${
                           i === selectedSize
                             ? "bg-walnut text-cream border-walnut"
                             : "border-sand/60 text-deep hover:border-walnut"
@@ -287,7 +292,7 @@ export default function ProductPage() {
 
                 {/* Quantity */}
                 <div className="flex flex-col gap-4">
-                  <span className="text-[0.625rem] uppercase tracking-[0.25em] font-semibold text-olive">
+                  <span className="font-sans text-[0.625rem] uppercase tracking-[0.25em] font-medium text-olive">
                     Quantity
                   </span>
                   <div className="flex items-center border border-sand w-fit">
@@ -297,7 +302,7 @@ export default function ProductPage() {
                     >
                       &minus;
                     </button>
-                    <span className="w-14 h-14 flex items-center justify-center text-[1rem] font-medium border-x border-sand">
+                    <span className="w-14 h-14 flex items-center justify-center text-[1rem] font-sans font-medium border-x border-sand">
                       {quantity}
                     </span>
                     <button
@@ -310,13 +315,13 @@ export default function ProductPage() {
                 </div>
 
                 {/* Add to Cart */}
-                <button className="w-full mt-2 py-5 bg-walnut text-cream text-[0.75rem] uppercase tracking-[0.25em] font-semibold hover:bg-deep transition-colors duration-300">
+                <button className="w-full mt-2 py-5 bg-walnut text-cream font-sans text-[0.75rem] uppercase tracking-[0.25em] font-semibold hover:bg-deep transition-colors duration-300">
                   Add to Bag
                 </button>
 
                 {/* Note */}
                 <div className="border-t border-sand/30 pt-6 pb-12">
-                  <p className="text-[0.75rem] text-olive/60 leading-[1.9] text-justify">
+                  <p className="font-sans text-[0.75rem] text-olive/60 leading-[1.9] text-justify font-medium">
                     Orders are reserved after receipt of a 50% advance payment.
                     Pickup available from Karachi. Contact us for international
                     shipping.
@@ -328,6 +333,7 @@ export default function ProductPage() {
           </motion.div>
         </div>
       </main>
+      </div>
       <Footer />
     </>
   );

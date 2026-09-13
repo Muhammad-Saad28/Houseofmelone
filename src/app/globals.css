@@ -75,6 +75,20 @@ body {
   }
 }
 
+/* ── Fixed header clearance ─────────────────────────────── */
+/* The header is position:fixed (h-20 = 80px mobile, lg:h-[84px] desktop).
+   #page-content wraps page body on non-homepage routes,
+   automatically clearing the navbar via padding-top. */
+#page-content {
+  padding-top: 80px;
+}
+
+@media (min-width: 1024px) {
+  #page-content {
+    padding-top: 84px;
+  }
+}
+
 /* ── Overflow wrap ──────────────────────────────────────── */
 .overflow-wrap-anywhere {
   overflow-wrap: anywhere;
@@ -96,7 +110,7 @@ body {
 }
 
 .animate-marquee-ltr {
-  animation: marquee-ltr 45s linear infinite;
+  animation: marquee-ltr 55s linear infinite;
 }
 
 /* Pause marquee on hover — desktop pointer devices only */

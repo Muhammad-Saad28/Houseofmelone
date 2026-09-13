@@ -5,16 +5,39 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 const baseCategories = [
-  { name: "Shalwar Kameez", href: "/shop?category=shalwar-kameez", id: "shalwar-kameez" },
-  { name: "Irish Linen", href: "/shop?category=shirts", id: "shirts" },
-  { name: "Tailored Pants", href: "/shop?category=pants", id: "pants" },
-  { name: "Matching Sets", href: "/shop?category=matching-sets", id: "matching-sets" },
-  { name: "Charsadda Chappal", href: "/shop?category=chappal", id: "chappal" },
-  { name: "Trucker Caps", href: "/shop?category=caps", id: "caps" },
-  { name: "Gadgets", href: "/shop?category=gadgets", id: "gadgets" },
+  {
+    name: "Shalwar Kameez",
+    href: "/shop?category=shalwar-kameez",
+    id: "shalwar-kameez",
+  },
+  {
+    name: "Irish Linen",
+    href: "/shop?category=shirts",
+    id: "shirts",
+  },
+  {
+    name: "Tailored Pants",
+    href: "/shop?category=pants",
+    id: "pants",
+  },
+  {
+    name: "Matching Sets",
+    href: "/shop?category=matching-sets",
+    id: "matching-sets",
+  },
+  {
+    name: "Charsadda Chappal",
+    href: "/shop?category=chappal",
+    id: "chappal",
+  },
+  {
+    name: "Trucker Caps",
+    href: "/shop?category=caps",
+    id: "caps",
+  },
 ];
 
-// Duplicate 4× for seamless infinite scroll
+// Duplicate categories for seamless infinite marquee
 const categories = [
   ...baseCategories,
   ...baseCategories,
@@ -27,36 +50,117 @@ function CarouselContent() {
   const currentCategory = searchParams.get("category");
 
   return (
-    /*
-      pause-on-hover only fires on devices that support hover (@media hover:hover).
-      On mobile (touch-only) the marquee runs uninterrupted.
-    */
-    <div className="flex whitespace-nowrap items-center w-max animate-marquee-ltr hover-pause motion-reduce:animate-none motion-reduce:overflow-x-auto scrollbar-none">
+    <div
+      className="
+        flex
+        items-center
+        whitespace-nowrap
+        w-max
+        animate-marquee-ltr
+        hover-pause
+        motion-reduce:animate-none
+        motion-reduce:overflow-x-auto
+        scrollbar-none
+      "
+    >
       {categories.map((cat, i) => {
         const isActive = currentCategory === cat.id;
 
         return (
-          <div key={`${cat.id}-${i}`} className="inline-flex items-center">
+          <div
+            key={`${cat.id}-${i}`}
+            className="inline-flex items-center"
+          >
             <Link
               href={cat.href}
-              className={`group/item relative px-10 md:px-14 lg:px-16 py-1 transition-opacity duration-300 ${
-                isActive ? "opacity-100" : "opacity-80 hover:opacity-100"
-              }`}
+              className={`
+                group/item
+                relative
+                inline-flex
+                items-center
+                justify-center
+                rounded-full
+                border
+                min-w-[190px]
+                md:min-w-[210px]
+                lg:min-w-[230px]
+                px-8
+                py-3
+                transition-all
+                duration-300
+                ease-out
+                ${
+                  isActive
+                    ? `
+                      border-walnut
+                      bg-walnut/[0.06]
+                      text-deep
+                      shadow-[0_2px_10px_rgba(73,52,38,0.08)]
+                    `
+                    : `
+                      border-sand
+                      bg-transparent
+                      text-deep/85
+                      hover:border-walnut/60
+                      hover:bg-walnut/[0.035]
+                      hover:text-deep
+                      hover:-translate-y-[1px]
+                      hover:shadow-[0_3px_12px_rgba(73,52,38,0.06)]
+                    `
+                }
+              `}
             >
-              <span className="font-serif text-[13px] md:text-[14px] lg:text-[15px] uppercase tracking-[0.16em] md:tracking-[0.18em] font-normal text-deep">
+              <span
+                className="
+                  font-serif
+                  text-[13px]
+                  md:text-[14px]
+                  lg:text-[15px]
+                  uppercase
+                  tracking-[0.15em]
+                  md:tracking-[0.17em]
+                  font-light
+                "
+              >
                 {cat.name}
               </span>
 
-              {/* Left→right underline on hover */}
+              {/* Subtle animated underline */}
               <span
-                className={`absolute -bottom-0.5 left-10 md:left-14 lg:left-16 right-10 md:right-14 lg:right-16 h-[1px] bg-walnut origin-left transition-transform duration-300 ease-out ${
-                  isActive ? "scale-x-100" : "scale-x-0 group-hover/item:scale-x-100"
-                }`}
+                className={`
+                  absolute
+                  bottom-[5px]
+                  left-9
+                  md:left-7
+                  lg:left-8
+                  right-8
+                  md:right-7
+                  lg:right-8
+                  h-px
+                  bg-walnut
+                  origin-left
+                  transition-transform
+                  duration-300
+                  ease-out
+                  ${
+                    isActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover/item:scale-x-100"
+                  }
+                `}
               />
             </Link>
 
-            {/* Bullet separator */}
-            <span className="text-walnut/25 text-[7px] select-none leading-none">●</span>
+            {/* Two-space visual gap between categories */}
+            <span
+              aria-hidden="true"
+              className="
+                w-5
+                md:w-6
+                lg:w-7
+                shrink-0
+              "
+            />
           </div>
         );
       })}
@@ -66,13 +170,65 @@ function CarouselContent() {
 
 export default function CategoryMarquee() {
   return (
-    <section className="w-full bg-cream border-y border-sand relative z-20 overflow-hidden">
-      {/* Edge fade masks */}
-      <div className="absolute inset-y-0 left-0 w-20 md:w-36 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-20 md:w-36 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
+    <section
+      className="
+        relative
+        z-20
+        w-full
+        overflow-hidden
+        bg-cream
+        pt-2
+      "
+    >
+      {/* Left edge fade */}
+      <div
+        className="
+          absolute
+          inset-y-2
+          left-0
+          w-12
+          md:w-20
+          lg:w-28
+          bg-gradient-to-r
+          from-cream
+          via-cream/90
+          to-transparent
+          z-10
+          pointer-events-none
+        "
+      />
 
-      {/* Marquee track - tight height for editorial divider look (~40px total) */}
-      <div className="flex py-2 md:py-2.5">
+      {/* Right edge fade */}
+      <div
+        className="
+          absolute
+          inset-y-2
+          right-0
+          w-12
+          md:w-20
+          lg:w-28
+          bg-gradient-to-l
+          from-cream
+          via-cream/90
+          to-transparent
+          z-10
+          pointer-events-none
+        "
+      />
+
+      {/* Bordered ticker */}
+      <div
+        className="
+          w-full
+          border-y
+          border-sand
+          bg-cream
+          flex
+          min-h-[52px]
+          md:min-h-[56px]
+          items-center
+        "
+      >
         <Suspense fallback={<div className="h-6" />}>
           <CarouselContent />
         </Suspense>

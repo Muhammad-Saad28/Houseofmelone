@@ -65,20 +65,20 @@ export default function ProductFeature({
       {/* Section label */}
       <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
         <span className="w-4 md:w-8 h-[1px] bg-walnut/25 flex-shrink-0" />
-        <span className="text-[0.45rem] md:text-[0.5625rem] uppercase tracking-[0.22em] text-olive font-medium whitespace-nowrap">
+        <span className="font-sans text-[0.45rem] md:text-[0.5625rem] uppercase tracking-[0.22em] text-olive font-medium whitespace-nowrap">
           {String(index + 1).padStart(2, "0")} — {product.categoryLabel}
         </span>
       </div>
 
       {/* Product name */}
-      <h3 className="font-serif text-[1rem] sm:text-[1.375rem] md:text-[2rem] lg:text-[2.625rem] leading-[1.04] tracking-[-0.01em] uppercase text-walnut mb-4 md:mb-7">
+      <h3 className="font-serif font-light text-[1rem] sm:text-[1.375rem] md:text-[2rem] lg:text-[2.625rem] leading-[1.04] tracking-[-0.01em] uppercase text-walnut mb-4 md:mb-7">
         {product.name}
       </h3>
 
       {/* Description */}
       <div className="flex gap-2 md:gap-3 mb-5 md:mb-9">
         <span className="w-[1.5px] bg-walnut/12 flex-shrink-0 self-stretch" />
-        <p className="text-[0.55rem] sm:text-[0.6875rem] md:text-[0.8125rem] leading-[1.75] md:leading-[2] text-deep/45 max-w-[340px] text-justify hyphens-auto">
+        <p className="font-sans text-[0.55rem] sm:text-[0.6875rem] md:text-[0.8125rem] leading-[1.75] md:leading-[2] text-deep/45 max-w-[340px] text-justify hyphens-auto font-medium">
           {product.homepageDescription}
         </p>
       </div>
@@ -88,7 +88,7 @@ export default function ProductFeature({
         <span className="text-[0.4rem] md:text-[0.5rem] uppercase tracking-[0.2em] text-olive/50 mb-1">
           Price
         </span>
-        <span className="font-serif text-[0.875rem] md:text-[1.125rem] lg:text-[1.25rem] font-medium text-walnut">
+        <span className="font-sans text-[0.875rem] md:text-[1.125rem] lg:text-[1.25rem] font-medium text-walnut">
           {formatPrice(product.price)}
         </span>
       </div>
@@ -100,7 +100,7 @@ export default function ProductFeature({
       <div>
         <Link
           href={`/products/${product.slug}`}
-          className="group/cta relative inline-flex items-center gap-2 md:gap-3 px-5 md:px-8 py-2.5 md:py-3.5 bg-walnut text-cream text-[0.45rem] md:text-[0.625rem] uppercase tracking-[0.2em] font-medium overflow-hidden transition-colors duration-500"
+          className="group/cta relative inline-flex items-center gap-2 md:gap-3 px-5 md:px-8 py-2.5 md:py-3.5 bg-walnut text-cream font-sans text-[0.45rem] md:text-[0.625rem] uppercase tracking-[0.2em] font-medium overflow-hidden transition-colors duration-500"
         >
           <span
             className="absolute inset-0 bg-deep translate-y-full group-hover/cta:translate-y-0 transition-transform duration-500"

@@ -28,21 +28,21 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="divider-line" />
-              <span className="text-[0.625rem] uppercase tracking-[0.16em] font-semibold text-olive">
+              <span className="font-sans text-[0.625rem] uppercase tracking-[0.16em] font-medium text-olive">
                 The Collection
               </span>
             </div>
-            <h2 className="font-serif text-[1.75rem] md:text-[2.125rem] lg:text-[2.5rem] tracking-[-0.02em] uppercase text-walnut">
+            <h2 className="font-serif font-light text-[1.75rem] md:text-[2.125rem] lg:text-[2.5rem] tracking-[-0.02em] uppercase text-walnut">
               Curated Essentials
             </h2>
-            <p className="text-[0.875rem] text-deep/50 mt-2 max-w-sm">
+            <p className="font-sans text-[0.875rem] text-deep/50 mt-2 max-w-sm font-medium">
               Designed for everyday ease, climate resilience, and enduring
               distinction.
             </p>
           </div>
           <Link
             href="/shop"
-            className="self-start sm:self-end flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.14em] font-semibold text-walnut border-b border-walnut/40 pb-0.5 hover:border-walnut transition-colors whitespace-nowrap"
+            className="self-start sm:self-end flex items-center gap-2 font-sans text-[0.6875rem] uppercase tracking-[0.14em] font-medium text-walnut border-b border-walnut/40 pb-0.5 hover:border-walnut transition-colors whitespace-nowrap"
           >
             View All
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -85,7 +85,7 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
                 {/* Product info */}
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[0.5625rem] uppercase tracking-[0.12em] text-olive font-medium">
+                    <span className="font-sans text-[0.5625rem] uppercase tracking-[0.12em] text-olive font-medium">
                       {product.categoryLabel}
                     </span>
                     <div className="flex items-center gap-1">
@@ -98,10 +98,10 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
                       ))}
                     </div>
                   </div>
-                  <h3 className="text-[0.875rem] font-medium text-deep line-clamp-1 leading-snug">
+                  <h3 className="font-serif font-light text-[0.875rem] text-deep line-clamp-1 leading-snug">
                     {product.name}
                   </h3>
-                  <p className="text-[0.875rem] text-walnut font-semibold">
+                  <p className="font-sans text-[0.875rem] text-walnut font-medium">
                     {formatPrice(product.price)}
                   </p>
                 </div>

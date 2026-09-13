@@ -66,7 +66,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             />
 
             {/* Logo text */}
-            <h1 className="font-serif text-[clamp(1.1rem,5.5vw,2.75rem)] font-medium uppercase tracking-[0.18em] sm:tracking-[0.24em] md:tracking-[0.28em] text-walnut leading-none whitespace-nowrap">
+            <h1 className="font-serif text-[clamp(1.1rem,5.5vw,2.75rem)] font-light uppercase tracking-[0.18em] sm:tracking-[0.24em] md:tracking-[0.28em] text-walnut leading-none whitespace-nowrap">
               House of Melone
             </h1>
 
@@ -75,7 +75,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.35 }}
-              className="mt-4 text-[0.55rem] md:text-[0.625rem] uppercase tracking-[0.3em] text-walnut/40 font-medium"
+              className="mt-4 font-sans text-[0.55rem] md:text-[0.625rem] uppercase tracking-[0.3em] text-walnut/40 font-medium"
             >
               Statement Redefined
             </motion.p>

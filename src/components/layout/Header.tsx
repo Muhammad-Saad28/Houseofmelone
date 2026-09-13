@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   headerLoad,
@@ -13,12 +14,14 @@ import {
 const allLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop?category=shalwar-kameez", label: "New Arrivals" },
-  { href: "/shop", label: "Collections" },
+  { href: "/collections", label: "Collections" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const mobileLinks = [
   { href: "/shop", label: "Shop All" },
+  { href: "/collections", label: "Collections" },
   { href: "/shop?category=shalwar-kameez", label: "Shalwar Kameez" },
   { href: "/shop?category=shirts", label: "Irish Linen Shirts" },
   { href: "/shop?category=pants", label: "Tailored Pants" },
@@ -26,9 +29,12 @@ const mobileLinks = [
   { href: "/shop?category=chappal", label: "Charsadda Chappal" },
   { href: "/shop?category=caps", label: "Trucker Caps" },
   { href: "/about", label: "Our Story" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -48,23 +54,27 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
+  const isTransparent = isHomepage && !isScrolled;
+  const textClass = isTransparent ? "text-white" : "text-deep";
+
   return (
     <>
       <motion.header
         variants={headerLoad}
         initial="hidden"
         animate="visible"
-        className={` fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isScrolled
-            ? ` bg-[#F2EBDD]/95 backdrop-blur-xl border-b border-walnut/10 shadow-[0_4px_24px_rgba(80,60,40,0.06)] `
-            : ` bg-transparent border-b border-transparent shadow-none backdrop-blur-0 `
-          } `}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isTransparent
+            ? "bg-transparent border-b border-transparent shadow-none backdrop-blur-0"
+            : "bg-[#F2EBDD]/95 backdrop-blur-xl border-b border-walnut/10 shadow-[0_4px_24px_rgba(80,60,40,0.06)]"
+        }`}
       >
         <div className="container-site">
           <div className="flex items-center justify-between h-20 lg:h-[84px]">
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(true)}
-              className={`lg:hidden flex flex-col gap-[5px] p-2 -ml-2 transition-opacity duration-300 hover:opacity-60 ${isScrolled ? 'text-black' : 'text-white'}`}
+              className={`lg:hidden flex flex-col gap-[5px] p-2 -ml-2 transition-opacity duration-300 hover:opacity-60 ${textClass}`}
               aria-label="Open menu"
             >
               <span className="block w-5 h-[1.5px] bg-current" />
@@ -74,7 +84,7 @@ export default function Header() {
             {/* Logo */}
             <div className="flex flex-1 lg:flex-none items-center justify-center lg:justify-start">
               <Link href="/" className="flex flex-col items-center lg:items-start group">
-                <span className={`font-serif text-[1.125rem] lg:text-[1.375rem] font-medium uppercase tracking-[0.22em] whitespace-nowrap leading-none transition-opacity duration-300 group-hover:opacity-70 ${isScrolled ? 'text-black' : 'text-white'}`}>
+                <span className={`font-serif text-[1.125rem] lg:text-[1.375rem] font-light uppercase tracking-[0.22em] whitespace-nowrap leading-none transition-opacity duration-300 group-hover:opacity-70 ${textClass}`}>
                   House of Melone
                 </span>
               </Link>
@@ -85,14 +95,14 @@ export default function Header() {
                 <Link
                   key={link.href + link.label}
                   href={link.href}
-                  className={`nav-link-slide text-[0.6875rem] font-medium uppercase tracking-[0.14em] transition-opacity duration-300 pb-0.5 hover:opacity-55 ${isScrolled ? 'text-black' : 'text-white'}`}
+                   className={`nav-link-slide font-sans text-[0.6875rem] font-medium uppercase tracking-[0.14em] transition-opacity duration-300 pb-0.5 hover:opacity-55 ${textClass}`}
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
             {/* Desktop Right Icons */}
-            <div className={`hidden lg:flex items-center gap-4 lg:flex-none justify-end ${isScrolled ? 'text-black' : 'text-white'}`}>
+            <div className={`hidden lg:flex items-center gap-4 lg:flex-none justify-end ${textClass}`}>
               <button
                 className="p-1.5 transition-opacity duration-300 hover:opacity-50"
                 aria-label="Search"
@@ -109,7 +119,8 @@ export default function Header() {
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
               </button>
-              <button
+              <Link
+                href="/login"
                 className="p-1.5 transition-opacity duration-300 hover:opacity-50"
                 aria-label="Account"
               >
@@ -124,7 +135,7 @@ export default function Header() {
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
                 </svg>
-              </button>
+              </Link>
               <button
                 className="p-1.5 transition-opacity duration-300 hover:opacity-50 relative flex items-center gap-2"
                 aria-label="Cart"
@@ -141,11 +152,11 @@ export default function Header() {
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <path d="M16 10a4 4 0 0 1-8 0" />
                 </svg>
-                <span className="text-[0.625rem] font-medium"> (0) </span>
+                <span className="font-sans text-[0.625rem] font-medium"> (0) </span>
               </button>
             </div>
             {/* Mobile right icons */}
-            <div className={`flex lg:hidden items-center gap-1 ${isScrolled ? 'text-black' : 'text-white'}`}>
+            <div className={`flex lg:hidden items-center gap-1 ${textClass}`}>
               <button
                 className="p-2 transition-opacity duration-300 hover:opacity-50"
                 aria-label="Search"
@@ -178,13 +189,13 @@ export default function Header() {
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <path d="M16 10a4 4 0 0 1-8 0" />
                 </svg>
-                <span className="text-[0.625rem] font-medium"> (0) </span>
+                <span className="font-sans text-[0.625rem] font-medium"> (0) </span>
               </button>
             </div>
           </div>
         </div>
       </motion.header>
-      {/* No spacer — header overlays the hero */}
+
       {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
@@ -205,7 +216,7 @@ export default function Header() {
               className="fixed inset-y-0 left-0 z-[70] w-[82vw] max-w-[320px] bg-cream shadow-2xl flex flex-col"
             >
               <div className="flex items-center justify-between px-6 h-16 border-b border-sand/30">
-                <span className="font-serif text-[0.875rem] font-medium uppercase tracking-[0.2em] text-walnut">
+                <span className="font-serif text-[0.875rem] font-light uppercase tracking-[0.2em] text-walnut">
                   Menu
                 </span>
                 <button
@@ -237,7 +248,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className=" flex items-center justify-between py-3.5 font-serif text-[1.125rem] font-normal text-deep hover:text-walnut transition-colors uppercase tracking-wide border-b border-sand/20 last:border-0 "
+                       className="flex items-center justify-between py-3.5 font-serif text-[1.125rem] font-light text-deep hover:text-walnut transition-colors uppercase tracking-wide border-b border-sand/20 last:border-0"
                     >
                       <span>{link.label}</span>
                       <svg
@@ -255,11 +266,28 @@ export default function Header() {
                   </motion.div>
                 ))}
               </motion.nav>
-              <div className="px-6 py-5 border-t border-sand/30 space-y-0.5">
-                <p className="text-[0.625rem] uppercase tracking-[0.18em] text-olive font-semibold">
+              <div className="px-6 py-5 border-t border-sand/30">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 py-3 font-sans text-[0.8125rem] font-medium text-deep hover:text-walnut transition-colors"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  Sign in / Create account
+                </Link>
+                <p className="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-olive font-medium mt-2">
                   House of Melone
                 </p>
-                <p className="text-[0.625rem] text-deep/40">Statement Redefined</p>
               </div>
             </motion.div>
           </>

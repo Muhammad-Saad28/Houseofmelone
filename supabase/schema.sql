@@ -1022,6 +1022,18 @@ values
     'chappal',
     'Traditional handcrafted footwear.',
     5
+  ),
+  (
+    'Trucker Caps',
+    'caps',
+    'Premium trucker caps.',
+    6
+  ),
+  (
+    'Gadgets',
+    'gadgets',
+    'Lifestyle accessories and gadgets.',
+    7
   )
 on conflict (slug) do nothing;
 

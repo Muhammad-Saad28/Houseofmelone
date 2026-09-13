@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
 import CategoryMarquee from "@/components/home/CategoryMarquee";
 import ProductFeature from "@/components/home/ProductFeature";
@@ -51,7 +51,6 @@ export default function Home() {
       {/* Splash — shows once per session, then reveals hero */}
       <SplashScreen onComplete={handleSplashComplete} />
 
-      {/* Fixed navbar — transparent over hero, cream on scroll */}
       <Header />
 
       <main className="flex-1">

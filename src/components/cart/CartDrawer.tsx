@@ -71,7 +71,7 @@ export default function CartDrawer({
           >
             {/* Header */}
             <div className="px-6 py-5 bg-cream-dim flex items-center justify-between border-b border-sand/40">
-              <span className="text-[0.6875rem] uppercase tracking-[0.14em] font-semibold text-walnut">
+              <span className="font-sans text-[0.6875rem] uppercase tracking-[0.14em] font-semibold text-walnut">
                 Shopping Bag ({items.length})
               </span>
               <button
@@ -110,7 +110,7 @@ export default function CartDrawer({
                     <line x1="3" y1="6" x2="21" y2="6" />
                     <path d="M16 10a4 4 0 0 1-8 0" />
                   </svg>
-                  <p className="text-[0.9375rem]">Your bag is empty</p>
+                  <p className="font-sans text-[0.9375rem] font-medium">Your bag is empty</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -129,7 +129,7 @@ export default function CartDrawer({
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start">
-                            <h4 className="text-[0.9375rem] font-medium text-deep">
+                            <h4 className="font-sans text-[0.9375rem] font-medium text-deep">
                               {item.name}
                             </h4>
                             <button
@@ -150,15 +150,15 @@ export default function CartDrawer({
                               </svg>
                             </button>
                           </div>
-                          <p className="text-[0.6875rem] uppercase tracking-[0.1em] text-olive mt-0.5">
+                          <p className="font-sans text-[0.6875rem] uppercase tracking-[0.1em] text-olive mt-0.5 font-medium">
                             {item.color} &bull; {item.size}
                           </p>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-[0.8125rem] font-medium text-walnut">
+                          <span className="font-sans text-[0.8125rem] font-medium text-walnut">
                             {formatPrice(item.price)}
                           </span>
-                          <span className="text-[0.75rem] text-deep/50">
+                          <span className="font-sans text-[0.75rem] text-deep/50 font-medium">
                             Qty: {item.quantity}
                           </span>
                         </div>
@@ -173,26 +173,26 @@ export default function CartDrawer({
             {items.length > 0 && (
               <div className="px-6 py-6 bg-cream-dim border-t border-sand/40 space-y-4">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-[0.8125rem] text-deep/60">
+                  <div className="flex justify-between font-sans text-[0.8125rem] text-deep/60 font-medium">
                     <span>Subtotal</span>
-                    <span className="font-medium text-deep">
+                    <span className="font-semibold text-deep">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-[0.8125rem] text-deep/60">
+                  <div className="flex justify-between font-sans text-[0.8125rem] text-deep/60 font-medium">
                     <span>Shipping</span>
-                    <span className="text-olive text-[0.6875rem] uppercase tracking-[0.1em] font-semibold">
+                    <span className="font-sans text-olive text-[0.6875rem] uppercase tracking-[0.1em] font-semibold">
                       Complimentary
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={handleCheckout}
-                  className="w-full py-4 bg-walnut text-cream text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors text-center"
+                  className="w-full py-4 bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.14em] font-semibold hover:bg-deep transition-colors text-center"
                 >
                   Order via WhatsApp
                 </button>
-                <p className="text-center text-[0.6875rem] text-deep/40 uppercase tracking-[0.1em]">
+                <p className="font-sans text-center text-[0.6875rem] text-deep/40 uppercase tracking-[0.1em] font-medium">
                   50% advance payment required to confirm
                 </p>
               </div>

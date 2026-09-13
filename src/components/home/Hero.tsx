@@ -50,14 +50,6 @@ export default function Hero({ animate = false }: HeroProps) {
               "linear-gradient(to right, rgba(20,12,8,0.65) 0%, rgba(20,12,8,0.35) 45%, transparent 72%)",
           }}
         />
-
-        {/* ── Bottom fade into next section ── */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-          style={{
-            background: "linear-gradient(to bottom, transparent, rgba(242,235,221,0.35))",
-          }}
-        />
       </div>
 
       {/* ── Text — left-aligned, vertically centred ── */}

@@ -16,6 +16,7 @@ export default function Footer() {
     { href: "/shop?category=pants", label: "Tailored Pants" },
     { href: "/shop?category=matching-sets", label: "Matching Sets" },
     { href: "/shop?category=chappal", label: "Chappal" },
+    { href: "/collections", label: "All Collections" },
   ];
 
   const support = [
@@ -42,26 +43,26 @@ export default function Footer() {
           {/* ── Col 1: Brand + tagline + description + newsletter ── */}
           <div className="flex flex-col gap-0">
             {/* Brand label */}
-            <p className="text-[0.6rem] uppercase tracking-[0.28em] text-[#d2c4be] mb-4">
+            <p className="font-sans text-[0.6rem] uppercase tracking-[0.28em] text-[#d2c4be] mb-4 font-medium">
               House of Melone
             </p>
 
             {/* Large serif tagline */}
-            <h3 className="font-serif text-[1.75rem] sm:text-[2rem] font-normal tracking-[0.08em] uppercase leading-[1.1] text-[#fff8f3] mb-5">
+            <h3 className="font-serif font-light text-[1.75rem] sm:text-[2rem] tracking-[0.08em] uppercase leading-[1.1] text-[#fff8f3] mb-5">
               Sartorially
               <br />
               Considered.
             </h3>
 
             {/* Description */}
-            <p className="text-[0.8125rem] leading-[1.75] text-[#d2c4be]">
+            <p className="font-sans text-[0.8125rem] leading-[1.75] text-[#d2c4be] font-medium">
               Sartorial discipline, heritage craftsmanship, and contemporary
               menswear tailoring cut for international silhouettes.
             </p>
 
             {/* Newsletter */}
             <div className="mt-9">
-              <p className="text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-3">
+              <p className="font-sans text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-3">
                 Journal &amp; Inquiries
               </p>
 
@@ -74,11 +75,11 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full bg-transparent py-3 pr-3 text-[0.8rem] text-[#fff8f3] placeholder:text-[#d2c4be]/60 focus:outline-none"
+                  className="w-full bg-transparent py-3 pr-3 font-sans text-[0.8rem] text-[#fff8f3] placeholder:text-[#d2c4be]/60 focus:outline-none font-medium"
                 />
                 <button
                   type="submit"
-                  className="text-[0.6rem] uppercase tracking-[0.18em] font-medium text-[#fff8f3] hover:text-[#d2c4be] transition-colors duration-300 whitespace-nowrap"
+                  className="font-sans text-[0.6rem] uppercase tracking-[0.18em] font-medium text-[#fff8f3] hover:text-[#d2c4be] transition-colors duration-300 whitespace-nowrap"
                 >
                   Subscribe
                 </button>
@@ -88,7 +89,7 @@ export default function Footer() {
 
           {/* ── Col 2: Collections ── */}
           <div>
-            <h4 className="text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
+            <h4 className="font-sans text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
               Collections
             </h4>
             <ul className="space-y-[22px]">
@@ -96,7 +97,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] hover:translate-x-0.5 inline-block transition-all duration-200"
+                    className="font-sans text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] hover:translate-x-0.5 inline-block transition-all duration-200 font-medium"
                   >
                     {link.label}
                   </Link>
@@ -107,7 +108,7 @@ export default function Footer() {
 
           {/* ── Col 3: Support ── */}
           <div>
-            <h4 className="text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
+            <h4 className="font-sans text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
               Support
             </h4>
             <ul className="space-y-[22px]">
@@ -115,7 +116,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] hover:translate-x-0.5 inline-block transition-all duration-200"
+                    className="font-sans text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] hover:translate-x-0.5 inline-block transition-all duration-200 font-medium"
                   >
                     {link.label}
                   </Link>
@@ -126,14 +127,14 @@ export default function Footer() {
 
           {/* ── Col 4: Client Care ── */}
           <div>
-            <h4 className="text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
+            <h4 className="font-sans text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-6">
               Client Care
             </h4>
             <ul className="space-y-[22px]">
               <li>
                 <a
                   href="mailto:houseofmelone@gmail.com"
-                  className="text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] transition-colors duration-200 break-all"
+                  className="font-sans text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] transition-colors duration-200 break-all font-medium"
                 >
                   houseofmelone@gmail.com
                 </a>
@@ -141,16 +142,16 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+923372388118"
-                  className="text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap"
+                  className="font-sans text-[0.8125rem] text-[#d2c4be] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap font-medium"
                 >
                   +92 337 2388118
                 </a>
               </li>
               <li className="pt-1">
-                <span className="block text-[0.8125rem] text-[#d2c4be] whitespace-nowrap">
+                <span className="block font-sans text-[0.8125rem] text-[#d2c4be] whitespace-nowrap font-medium">
                   Mon — Fri, 11 AM — 6 PM
                 </span>
-                <span className="block text-[0.8125rem] text-[#d2c4be] mt-1">
+                <span className="block font-sans text-[0.8125rem] text-[#d2c4be] mt-1 font-medium">
                   Karachi, Pakistan
                 </span>
               </li>
@@ -160,20 +161,20 @@ export default function Footer() {
         <br></br>
         {/* ── Bottom bar ── */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] text-center sm:text-left">
+          <p className="font-sans text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] text-center sm:text-left font-medium">
             © {new Date().getFullYear()} House of Melone. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-6">
             <Link
               href="#"
-              className="text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap"
+              className="font-sans text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap font-medium"
             >
               Privacy Policy
             </Link>
             <Link
               href="#"
-              className="text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap"
+              className="font-sans text-[0.6875rem] text-[#d2c4be] tracking-[0.06em] hover:text-[#fff8f3] transition-colors duration-200 whitespace-nowrap font-medium"
             >
               Terms of Service
             </Link>

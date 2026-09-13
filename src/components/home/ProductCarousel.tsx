@@ -37,12 +37,12 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 lg:mb-20">
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-5">
             <span className="w-5 md:w-10 h-[1px] bg-walnut/30" />
-            <span className="text-[0.5rem] md:text-[0.625rem] uppercase tracking-[0.22em] text-olive font-medium">
+            <span className="font-sans text-[0.5rem] md:text-[0.625rem] uppercase tracking-[0.22em] text-olive font-medium">
               Curated Selection
             </span>
             <span className="w-5 md:w-10 h-[1px] bg-walnut/30" />
           </div>
-          <h2 className="font-serif text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-3">
+          <h2 className="font-serif font-light text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] leading-[1.05] tracking-[-0.02em] uppercase text-walnut mb-3">
             Latest Arrivals
           </h2>
         </div>
@@ -70,21 +70,21 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-full py-2 bg-cream text-walnut text-[0.625rem] uppercase tracking-[0.14em] font-semibold text-center border border-walnut/10">
+                      <div className="w-full py-2 bg-cream text-walnut font-sans text-[0.625rem] uppercase tracking-[0.14em] font-medium text-center border border-walnut/10">
                         View Details
                       </div>
                     </div>
                   </div>
                   <div className="pt-4 pb-1 space-y-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-[0.55rem] md:text-[0.625rem] uppercase tracking-[0.14em] text-olive font-medium">
+                      <span className="font-sans text-[0.55rem] md:text-[0.625rem] uppercase tracking-[0.14em] text-olive font-medium">
                         {product.categoryLabel}
                       </span>
                     </div>
-                    <h3 className="text-[0.8125rem] font-medium text-deep line-clamp-1 leading-[1.6]">
+                    <h3 className="font-serif font-light text-[0.8125rem] text-deep line-clamp-1 leading-[1.6]">
                       {product.name}
                     </h3>
-                    <p className="text-[0.8125rem] text-walnut font-medium">
+                    <p className="font-sans text-[0.8125rem] text-walnut font-medium">
                       {formatPrice(product.price)}
                     </p>
                   </div>

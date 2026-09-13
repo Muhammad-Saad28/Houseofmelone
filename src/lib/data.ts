@@ -31,7 +31,7 @@ function mapCategory(slug: string): Category {
     "pants": "pants",
     "matching-sets": "matching-sets",
     "chappal": "chappal",
-    "caps": "chappal",
+    "caps": "caps",
   };
   return map[slug] || "shalwar-kameez";
 }
