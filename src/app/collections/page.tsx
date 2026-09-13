@@ -16,19 +16,19 @@ const collections = [
     name: "Irish Linen",
     slug: "shirts",
     description: "Premium linen shirts for effortless tailoring.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSKY2x0fjCD_NaAitUPMKbvcg7CsmcfYQBZrMT0Hdsn4lPGNpFKQOvBES2vZjLF30AI-3IUhBRUa-emLw8zhPZIGW4xToRd3qbNt0Eo5er2JxiAKrRAoR5J7G3ry3m7kk4mCcNws2Jt6YZNKV1R2HWnSXvdu2iA8TvGp0aK3US4DCdG-ep7pQpB4lHsMlo3r9a3_iJh5LivOLEdgyoKna1YZch4nsXI72hlKgMJhHqB_6Y1brLt3U4",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBnFi_WgJS4z8BeWkO8yj5UEiwDpD-VBCdqg4pRUyiDn7Uozqov_YPmWrKJJpCWTbsN2nMRoqdKw67aGp1LgcFcSLM9JwBaByk9I2-JlUsFlvdrVtCIlncNgJfjbvbkDp0F5QsSH9jc2T6Sk5kOHUHnOpQaYWshdw6HlLMGrojmyqekvj2emRexsjyC1IXoYwV2MTKfyqYD-a-jpeMAta9EUMvIe7_IOGAoREAsatJYbTp76K7gDKJu",
   },
   {
     name: "Tailored Pants",
     slug: "pants",
     description: "Contemporary tailored trousers.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB82Icm3J5lAWE4e3GFJgwaJ0G8v2VBP9nW6PjrTruo1pPcJ8rJTEtPHuFQRIVq78PM5nTbdBFliPzywhmhN4QJLcdaPyEKqxYtfC3kxmaFv8uIY27W9yinHSvaHmiGZMaVxb1vwg9zbvH_KSiyzWb2rzVJiHj_JxCzzZ3D10sJlocdL_eQ1Ebtjv-GPZCEznHTMviOZO0neWgt-nPXcRrWrIt7RSI6C_WPLY0iNozbsvvIQvEtatvM",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5nhkTm1sUu5htz-TGkKtUTkHWPaMlI5WEExnXy2bPeeVXpC3ctCnrcSulqzUAoJdynNz-vR-2-HI7Z5t1bfYWlIKein5W2L86YLl7F7elbyg524Ean5YoUzkJiLPvmO-HwBjrz4N2N89iej3fn8pKndp3KVYy5P7KP850OKZwCQjhVS7W8FoG52InrPUgfy2H-w3VACs8cjpDjhgnnFKBZt8EZZborDlauTdXjizzW_0WPOPdgMkZ",
   },
   {
     name: "Matching Sets",
     slug: "matching-sets",
     description: "Coordinated menswear sets.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSKY2x0fjCD_NaAitUPMKbvcg7CsmcfYQBZrMT0Hdsn4lPGNpFKQOvBES2vZjLF30AI-3IUhBRUa-emLw8zhPZIGW4xToRd3qbNt0Eo5er2JxiAKrRAoR5J7G3ry3m7kk4mCcNws2Jt6YZNKV1R2HWnSXvdu2iA8TvGp0aK3US4DCdG-ep7pQpB4lHsMlo3r9a3_iJh5LivOLEdgyoKna1YZch4nsXI72hlKgMJhHqB_6Y1brLt3U4",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5EgVlBN4V7VZWmiioABcYql6WcGXZ3D5c22mwrKrDgiN0GsavC3Na3xBNM6Yj8B9CURbOSzkQFZsFB-zye-LKwqXLPVxpjx-Hn7R-whhnMir9GO_b3fYlWM_gJjMCpxroxC531loCXlWMsJL3CwB46aijbvh55SbltBcfx6S0VuMeeJezUlyvCuLlFtg-rT7O-cCRUyhkoj-49k0dHu_-ryv6A_tf86iUjCQGg3ZnjAHpjDkQu1pX",
   },
   {
     name: "Charsadda Chappal",
@@ -40,7 +40,7 @@ const collections = [
     name: "Trucker Caps",
     slug: "caps",
     description: "Premium trucker caps.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB82Icm3J5lAWE4e3GFJgwaJ0G8v2VBP9nW6PjrTruo1pPcJ8rJTEtPHuFQRIVq78PM5nTbdBFliPzywhmhN4QJLcdaPyEKqxYtfC3kxmaFv8uIY27W9yinHSvaHmiGZMaVxb1vwg9zbvH_KSiyzWb2rzVJiHj_JxCzzZ3D10sJlocdL_eQ1Ebtjv-GPZCEznHTMviOZO0neWgt-nPXcRrWrIt7RSI6C_WPLY0iNozbsvvIQvEtatvM",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCze0ljZ4INaANpkhzgKzLPCnWhDj4X8F8YygGsECU5ypjgf1_sTGQAA9nSdKZpqyLeYQTv66S_nDBVVlOtSYTDp2pnJ4gLCyRojDhfUE255DnDDM-uu2pLHiITGC6vylY686eIpqXp5YqK7u7UiZD05HtB2CClJuDUvrENhx2hhaB3X_28US84LZz9xc8qIPi3a1pG7BfEAi5Z8cFwlbeL9IJYZKVDoAnoYyp6u344QrpqjsW6GpRy",
   },
 ];
 

@@ -67,9 +67,11 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className="mt-9">
+              <br></br>
               <p className="font-sans text-[0.6rem] uppercase tracking-[0.22em] font-medium text-[#fff8f3] mb-3">
                 Journal &amp; Inquiries
               </p>
+              <br></br>
 
               <form
                 className="flex items-center border-b border-[#fff8f3]/25 focus-within:border-[#fff8f3]/60 transition-colors duration-300"
