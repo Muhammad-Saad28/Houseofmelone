@@ -47,6 +47,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
@@ -105,8 +106,13 @@ body {
 
 /* ── Marquee LTR ─────────────────────────────────────────────── */
 @keyframes marquee-ltr {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .animate-marquee-ltr {
@@ -124,6 +130,7 @@ body {
 .nav-link-slide {
   position: relative;
 }
+
 .nav-link-slide::after {
   content: "";
   position: absolute;
@@ -136,12 +143,14 @@ body {
   transform-origin: left center;
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .nav-link-slide:hover::after {
   transform: scaleX(1);
 }
+
 /* Transparent-header variant: underline in white */
 .nav-link-slide.text-white\/80::after {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* ── Section spacing ─────────────────────────────────────── */
@@ -166,9 +175,15 @@ body {
 
 /* ── Hero image — subtle Ken Burns drift ────────────────── */
 @keyframes hero-drift {
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.025); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.025);
+  }
 }
+
 .animate-hero-drift {
   animation: hero-drift 9s ease-in-out 1.4s forwards;
   /* starts at 1400ms, drifts slowly, stops at 1.025 */
@@ -176,6 +191,7 @@ body {
 
 /* ── Reduced Motion ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -204,11 +220,13 @@ body {
 .img-hover {
   overflow: hidden;
 }
+
 .img-hover img,
 .img-hover .img-inner {
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.5s ease;
+    filter 0.5s ease;
 }
+
 .img-hover:hover img,
 .img-hover:hover .img-inner {
   transform: scale(1.04);
@@ -217,16 +235,20 @@ body {
 
 /* ── Shimmer Loading Skeleton ────────────────────────────── */
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
+
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-cream-dim) 25%,
-    var(--color-cream) 50%,
-    var(--color-cream-dim) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--color-cream-dim) 25%,
+      var(--color-cream) 50%,
+      var(--color-cream-dim) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.8s ease-in-out infinite;
 }
@@ -242,6 +264,7 @@ button:active:not(:disabled) {
   position: relative;
   display: inline-block;
 }
+
 .link-underline::after {
   content: "";
   position: absolute;
@@ -252,6 +275,7 @@ button:active:not(:disabled) {
   background-color: currentColor;
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .link-underline:hover::after {
   width: 100%;
 }
@@ -278,9 +302,11 @@ body::before {
 img {
   transition: opacity 0.4s ease;
 }
+
 img[loading] {
   opacity: 0;
 }
+
 img.loaded,
 img:not([loading]) {
   opacity: 1;
@@ -290,6 +316,7 @@ img:not([loading]) {
 .card-hover {
   transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .card-hover:hover {
   box-shadow: 0 16px 48px -8px rgba(58, 41, 32, 0.14);
   transform: translateY(-3px);

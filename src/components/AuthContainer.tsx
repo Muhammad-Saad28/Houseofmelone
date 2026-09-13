@@ -132,22 +132,26 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
             <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-5">
               Welcome back
             </p>
+            <br></br>
+            
             <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-8 text-center">
               Sign In
             </h1>
-
+            <br></br>
+            
             {/* Google button */}
             <button
               onClick={handleGoogleLogin}
               disabled={googleLoading}
               type="button"
-              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-3.5 border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
+              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-[1.375rem] border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
             >
               <GoogleIcon />
               {googleLoading ? "Connecting..." : "Continue with Google"}
             </button>
-
-            <div className="flex items-center gap-3 w-full my-5">
+            <br></br>
+            
+            <div className="flex items-center gap-3 w-full my-7">
               <div className="flex-1 h-[1px] bg-sand/40" />
               <span className="font-sans text-[0.625rem] uppercase tracking-[0.12em] text-walnut/40 font-medium">or</span>
               <div className="flex-1 h-[1px] bg-sand/40" />
@@ -157,14 +161,14 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <p className="font-sans text-[0.75rem] text-red-600 mb-4 text-center font-medium">{loginError}</p>
             )}
 
-            <form onSubmit={handleLogin} className="w-full flex flex-col gap-5">
+            <form onSubmit={handleLogin} className="w-full flex flex-col gap-6">
               <input
                 type="email"
                 placeholder="Email"
                 required
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-5 py-4 font-sans text-[0.875rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
               <input
                 type="password"
@@ -172,7 +176,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                 required
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-5 py-4 font-sans text-[0.875rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
 
               <div className="flex justify-end w-full">
@@ -184,7 +188,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full py-4 bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl mt-1"
+                className="w-full py-[1.375rem] bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl mt-1"
               >
                 {loginLoading ? "Signing in..." : "Sign In"}
               </button>
@@ -194,12 +198,12 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
 
         {/* --- Sign Up Form (Right Side) --- */}
         <div className={`absolute top-0 right-0 w-1/2 h-full px-10 sm:px-12 py-10 flex flex-col justify-center items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${!isLogin ? "opacity-100 z-10 translate-x-0" : "opacity-0 z-0 translate-x-10 pointer-events-none"}`}>
-          <div className="w-full max-w-[340px] flex flex-col items-center">
+          <div className="w-full max-w-[380px] flex flex-col items-center">
             {/* Overline */}
-            <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-3">
+            <p className="font-sans text-[0.5625rem] uppercase tracking-[0.25em] text-olive font-medium mb-5">
               New here?
             </p>
-            <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-6 text-center">
+            <h1 className="font-serif font-light text-[2rem] md:text-[2.25rem] text-walnut leading-[1.1] tracking-[-0.02em] mb-8 text-center">
               Create Account
             </h1>
 
@@ -208,13 +212,13 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               onClick={handleGoogleLogin}
               disabled={googleLoading}
               type="button"
-              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-3.5 border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
+              className="w-full max-w-[280px] flex items-center justify-center gap-3 py-[1.375rem] border border-sand/60 rounded-full text-deep font-sans text-[0.8125rem] font-medium hover:border-walnut/40 hover:text-walnut hover:shadow-[0_2px_12px_-3px_rgba(58,41,32,0.1)] transition-all duration-300 disabled:opacity-50 mb-2"
             >
               <GoogleIcon />
               {googleLoading ? "Connecting..." : "Continue with Google"}
             </button>
 
-            <div className="flex items-center gap-3 w-full my-5">
+            <div className="flex items-center gap-3 w-full my-7">
               <div className="flex-1 h-[1px] bg-sand/40" />
               <span className="font-sans text-[0.625rem] uppercase tracking-[0.12em] text-walnut/40 font-medium">or</span>
               <div className="flex-1 h-[1px] bg-sand/40" />
@@ -227,14 +231,14 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <p className="font-sans text-[0.75rem] text-olive mb-3 text-center font-medium">{signupSuccess}</p>
             )}
 
-            <form onSubmit={handleSignup} className="w-full flex flex-col gap-4">
+            <form onSubmit={handleSignup} className="w-full flex flex-col gap-5">
               <input
                 type="text"
                 placeholder="Full name"
                 required
                 value={signupName}
                 onChange={(e) => setSignupName(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-5 py-4 font-sans text-[0.875rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
               <input
                 type="email"
@@ -242,7 +246,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                 required
                 value={signupEmail}
                 onChange={(e) => setSignupEmail(e.target.value)}
-                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-5 py-4 font-sans text-[0.875rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
               />
               <div>
                 <input
@@ -252,7 +256,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
                   minLength={8}
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-5 py-4 font-sans text-[0.875rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
+                  className="w-full bg-cream-dim/40 border border-sand/50 rounded-xl px-6 py-[1.375rem] font-sans text-[1rem] text-deep placeholder-walnut/35 focus:outline-none focus:border-walnut/50 focus:bg-cream-dim/60 transition-all duration-300"
                 />
                 <p className="font-sans text-[0.5625rem] text-walnut/45 mt-1.5 pl-1">
                   Minimum 8 characters
@@ -262,7 +266,7 @@ export default function AuthContainer({ initialMode = "login" }: AuthContainerPr
               <button
                 type="submit"
                 disabled={signupLoading}
-                className="w-full mt-1 py-4 bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl"
+                className="w-full mt-1 py-[1.375rem] bg-walnut text-cream font-sans text-[0.6875rem] uppercase tracking-[0.22em] font-semibold hover:bg-deep transition-colors duration-300 disabled:opacity-70 rounded-xl"
               >
                 {signupLoading ? "Creating..." : "Create Account"}
               </button>
