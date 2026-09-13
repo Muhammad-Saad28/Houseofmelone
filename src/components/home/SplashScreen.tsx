@@ -66,7 +66,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             />
 
             {/* Logo text */}
-            <h1 className="font-serif text-[1.75rem] sm:text-[2.25rem] md:text-[2.75rem] font-medium uppercase tracking-[0.28em] text-walnut leading-none">
+            <h1 className="font-serif text-[clamp(1.1rem,5.5vw,2.75rem)] font-medium uppercase tracking-[0.18em] sm:tracking-[0.24em] md:tracking-[0.28em] text-walnut leading-none whitespace-nowrap">
               House of Melone
             </h1>
 
